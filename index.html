@@ -2,77 +2,52 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#111827">
 <title>Supervisor Plata</title>
 
 <style>
 *{box-sizing:border-box}
 
-:root{
- --bg:#f3f4f6;
- --card:#ffffff;
- --text:#111827;
- --muted:#6b7280;
- --line:#e5e7eb;
- --primary:#111827;
- --blue:#2563eb;
- --green:#16a34a;
- --red:#dc2626;
- --orange:#d97706;
-}
-
 body{
  margin:0;
- background:var(--bg);
- color:var(--text);
- font-family:Arial,Helvetica,sans-serif;
+ background:#f3f4f6;
+ color:#111827;
+ font-family:Arial,sans-serif;
 }
 
 .app{
  max-width:1000px;
  margin:auto;
- min-height:100vh;
- padding-bottom:90px;
+ padding-bottom:80px;
 }
 
 header{
- background:var(--primary);
+ background:#111827;
  color:white;
- padding:18px 16px;
+ padding:16px;
  position:sticky;
  top:0;
- z-index:20;
- box-shadow:0 3px 12px #0003;
+ z-index:5;
 }
 
-.header-row{
+.head{
  display:flex;
  justify-content:space-between;
  align-items:center;
 }
 
-header h1{
- margin:0;
+h1{
  font-size:21px;
+ margin:0;
 }
 
 header small{
  color:#cbd5e1;
 }
 
-.settings{
- background:#ffffff18;
- color:white;
- border:0;
- border-radius:12px;
- width:42px;
- height:42px;
- font-size:20px;
-}
-
 main{
- padding:15px;
+ padding:14px;
 }
 
 .screen{
@@ -85,183 +60,156 @@ main{
 
 h2{
  font-size:21px;
- margin:8px 0 15px;
-}
-
-h3{
- margin:0 0 8px;
 }
 
 .card{
- background:var(--card);
- border:1px solid var(--line);
- border-radius:16px;
- padding:15px;
- margin-bottom:12px;
+ background:white;
+ border:1px solid #e5e7eb;
+ border-radius:15px;
+ padding:14px;
+ margin:10px 0;
  box-shadow:0 2px 8px #00000008;
 }
 
-.stats{
+.stats,
+.quick{
  display:grid;
  grid-template-columns:repeat(2,1fr);
- gap:10px;
+ gap:9px;
 }
 
 .stat{
  background:white;
- border:1px solid var(--line);
- border-radius:15px;
- padding:15px;
+ border:1px solid #e5e7eb;
+ border-radius:14px;
+ padding:13px;
 }
 
-.stat-number{
- font-size:27px;
+.num{
+ font-size:26px;
  font-weight:bold;
 }
 
-.stat-label{
- color:var(--muted);
- font-size:12px;
-}
-
-.quick{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:10px;
- margin:15px 0;
+.muted{
+ color:#6b7280;
+ font-size:13px;
 }
 
 .quick button{
+ border:1px solid #e5e7eb;
  background:white;
- border:1px solid var(--line);
- border-radius:15px;
- padding:15px;
+ border-radius:14px;
+ padding:14px;
  text-align:left;
  font-weight:bold;
- color:var(--text);
 }
 
-.quick-icon{
+.ico{
+ font-size:24px;
  display:block;
- font-size:25px;
- margin-bottom:7px;
+ margin-bottom:5px;
+}
+
+label{
+ display:block;
+ font-size:12px;
+ font-weight:bold;
+ margin:9px 0 4px;
+}
+
+input,
+select,
+textarea{
+ width:100%;
+ padding:11px;
+ border:1px solid #d1d5db;
+ border-radius:10px;
+ background:white;
+ font-size:14px;
+}
+
+textarea{
+ min-height:90px;
 }
 
 button{
- cursor:pointer;
  font-family:inherit;
+ cursor:pointer;
+}
+
+.primary,
+.secondary,
+.danger{
+ border:0;
+ border-radius:10px;
+ padding:11px 14px;
+ font-weight:bold;
 }
 
 .primary{
- background:var(--blue);
+ background:#2563eb;
  color:white;
- border:0;
- padding:12px 15px;
- border-radius:11px;
- font-weight:bold;
 }
 
 .secondary{
  background:#e5e7eb;
  color:#111827;
- border:0;
- padding:11px 14px;
- border-radius:11px;
- font-weight:bold;
 }
 
-.danger-btn{
- background:var(--red);
+.danger{
+ background:#dc2626;
  color:white;
- border:0;
- padding:11px 14px;
- border-radius:11px;
- font-weight:bold;
 }
 
 .actions{
  display:flex;
  flex-wrap:wrap;
  gap:8px;
- margin-top:12px;
-}
-
-.form label{
- display:block;
- font-size:12px;
- font-weight:bold;
- margin:10px 0 5px;
-}
-
-input,select,textarea{
- width:100%;
- border:1px solid #d1d5db;
- border-radius:11px;
- padding:12px;
- background:white;
- color:var(--text);
- font-size:14px;
-}
-
-textarea{
- min-height:100px;
- resize:vertical;
-}
-
-.badge{
- display:inline-block;
- padding:5px 9px;
- border-radius:20px;
- font-size:11px;
- font-weight:bold;
- background:#e0e7ff;
- color:#3730a3;
-}
-
-.badge-green{
- background:#dcfce7;
- color:#166534;
-}
-
-.badge-red{
- background:#fee2e2;
- color:#991b1b;
-}
-
-.badge-orange{
- background:#ffedd5;
- color:#9a3412;
+ margin-top:10px;
 }
 
 .item{
- border:1px solid var(--line);
- border-radius:12px;
- padding:12px;
- margin-top:9px;
+ border:1px solid #e5e7eb;
+ border-radius:11px;
+ padding:11px;
+ margin:8px 0;
  background:white;
 }
 
 .row{
  display:flex;
  justify-content:space-between;
+ gap:8px;
  align-items:center;
- gap:10px;
 }
 
-.item p{
- margin:6px 0;
- font-size:13px;
+.badge{
+ border-radius:20px;
+ padding:4px 8px;
+ font-size:11px;
+ background:#dcfce7;
+ color:#166534;
 }
 
-.muted{
- color:var(--muted);
- font-size:13px;
+.pending{
+ background:#fee2e2;
+ color:#991b1b;
 }
 
 .empty{
  text-align:center;
- color:var(--muted);
- padding:20px 5px;
+ color:#6b7280;
+ padding:20px;
+}
+
+.result{
+ white-space:pre-wrap;
+ background:#f8fafc;
+ border:1px solid #e5e7eb;
+ border-radius:11px;
+ padding:12px;
+ margin-top:10px;
+ font-size:13px;
 }
 
 .bottom{
@@ -270,59 +218,44 @@ textarea{
  left:0;
  right:0;
  background:white;
- border-top:1px solid var(--line);
- z-index:30;
+ border-top:1px solid #ddd;
+ z-index:8;
 }
 
-.bottom-nav{
+.nav{
  max-width:1000px;
  margin:auto;
  display:grid;
  grid-template-columns:repeat(4,1fr);
 }
 
-.bottom button{
+.nav button{
  border:0;
  background:white;
  color:#6b7280;
- padding:9px 3px;
+ padding:8px;
  font-size:11px;
 }
 
-.bottom button b{
+.nav b{
  display:block;
- font-size:20px;
- margin-bottom:2px;
+ font-size:19px;
 }
 
-.bottom button.active{
- color:var(--blue);
-}
-
-.result{
- margin-top:12px;
- background:#f8fafc;
- border:1px solid var(--line);
- border-radius:12px;
- padding:12px;
-}
-
-.file-box{
- border:2px dashed #cbd5e1;
- border-radius:13px;
- padding:20px;
- text-align:center;
- background:#f8fafc;
+.nav .active{
+ color:#2563eb;
 }
 
 @media(min-width:700px){
- .stats{
-  grid-template-columns:repeat(4,1fr);
- }
 
- .quick{
-  grid-template-columns:repeat(4,1fr);
- }
+.stats{
+ grid-template-columns:repeat(4,1fr);
+}
+
+.quick{
+ grid-template-columns:repeat(4,1fr);
+}
+
 }
 </style>
 </head>
@@ -332,19 +265,26 @@ textarea{
 <div class="app">
 
 <header>
- <div class="header-row">
-  <div>
-   <h1 id="appName">SUPERVISOR PLATA</h1>
-   <small id="currentDate"></small>
-  </div>
 
-  <button class="settings" onclick="showScreen('config')">⚙️</button>
- </div>
+<div class="head">
+
+<div>
+
+<h1 id="appTitle">SUPERVISOR PLATA</h1>
+
+<small id="date"></small>
+
+</div>
+
+<button class="secondary" onclick="show('config')">⚙️</button>
+
+</div>
+
 </header>
 
 <main>
 
-<!-- ================= INICIO ================= -->
+<!-- INICIO -->
 
 <section id="home" class="screen active">
 
@@ -352,88 +292,90 @@ textarea{
 
 <div class="stats">
 
- <div class="stat">
-  <div class="stat-number" id="totalSets">0</div>
-  <div class="stat-label">Conjuntos activos</div>
- </div>
+<div class="stat">
+<div class="num" id="sets">0</div>
+<div class="muted">Conjuntos activos</div>
+</div>
 
- <div class="stat">
-  <div class="stat-number" id="totalGuards">0</div>
-  <div class="stat-label">Guardas activos</div>
- </div>
+<div class="stat">
+<div class="num" id="guards">0</div>
+<div class="muted">Guardas activos</div>
+</div>
 
- <div class="stat">
-  <div class="stat-number" id="totalNov">0</div>
-  <div class="stat-label">Novedades</div>
- </div>
+<div class="stat">
+<div class="num" id="novs">0</div>
+<div class="muted">Novedades</div>
+</div>
 
- <div class="stat">
-  <div class="stat-number" id="totalPending">0</div>
-  <div class="stat-label">Pendientes</div>
- </div>
+<div class="stat">
+<div class="num" id="pend">0</div>
+<div class="muted">Pendientes</div>
+</div>
 
 </div>
 
 <div class="quick">
 
-<button onclick="showScreen('whatsapp')">
- <span class="quick-icon">📋</span>
- Pegar WhatsApp
+<button onclick="show('whatsapp')">
+<span class="ico">📋</span>
+Pegar WhatsApp
 </button>
 
-<button onclick="showScreen('planillas')">
- <span class="quick-icon">🚗</span>
- Planillajes
+<button onclick="show('planillas')">
+<span class="ico">🚗</span>
+Planillajes
 </button>
 
-<button onclick="showScreen('turnos')">
- <span class="quick-icon">🔄</span>
- Cambio de turno
+<button onclick="show('turnos')">
+<span class="ico">🔄</span>
+Cambio de turno
 </button>
 
-<button onclick="showScreen('rondas')">
- <span class="quick-icon">🔵</span>
- Rondas
+<button onclick="show('rondas')">
+<span class="ico">🔵</span>
+Rondas
 </button>
 
-<button onclick="showScreen('novedades')">
- <span class="quick-icon">📝</span>
- Novedades
+<button onclick="show('novedades')">
+<span class="ico">📝</span>
+Novedades
 </button>
 
-<button onclick="showScreen('requerimientos')">
- <span class="quick-icon">🛠️</span>
- Requerimientos
+<button onclick="show('req')">
+<span class="ico">🛠️</span>
+Requerimientos
 </button>
 
-<button onclick="showScreen('minutas')">
- <span class="quick-icon">📒</span>
- Minutas
+<button onclick="show('minutas')">
+<span class="ico">📒</span>
+Minutas
 </button>
 
-<button onclick="showScreen('dotacion')">
- <span class="quick-icon">👕</span>
- Dotación
+<button onclick="show('dotacion')">
+<span class="ico">👕</span>
+Dotación
 </button>
 
-<button onclick="showScreen('conjuntos')">
- <span class="quick-icon">🏢</span>
- Conjuntos
+<button onclick="show('conjuntos')">
+<span class="ico">🏢</span>
+Conjuntos
 </button>
 
-<button onclick="showScreen('personal')">
- <span class="quick-icon">👮</span>
- Personal
+<button onclick="show('personal')">
+<span class="ico">👮</span>
+Personal
+</button>
+
+<button onclick="show('informes')">
+<span class="ico">📊</span>
+Informes
 </button>
 
 </div>
 
 <div class="card">
 
-<div class="row">
-<h3>🚨 Pendientes</h3>
-<span class="badge badge-red" id="pendingBadge">0</span>
-</div>
+<b>🚨 Pendientes</b>
 
 <div id="homePending"></div>
 
@@ -442,162 +384,151 @@ textarea{
 </section>
 
 
-<!-- ================= WHATSAPP ================= -->
-
-<section id="whatsapp" class="screen">
-
-<button class="secondary" onclick="showScreen('home')">← Inicio</button>
-
-<h2>📋 Información de WhatsApp</h2>
-
-<div class="card">
-
-<p class="muted">
-Copia el mensaje recibido por WhatsApp y pégalo aquí.
-La aplicación intentará identificar qué tipo de información contiene.
-</p>
-
-<textarea id="whatsappText"
-placeholder="Pega aquí el mensaje del guarda o supervisor..."></textarea>
-
-<div class="actions">
-
-<button class="primary" onclick="analizarWhatsApp()">
-🤖 Analizar
-</button>
-
-<button class="secondary" onclick="limpiarWhatsApp()">
-Limpiar
-</button>
-
-</div>
-
-<div id="whatsappResult"></div>
-
-</div>
-
-</section>
-
-
-<!-- ================= CONJUNTOS ================= -->
+<!-- CONJUNTOS -->
 
 <section id="conjuntos" class="screen">
 
-<button class="secondary" onclick="showScreen('home')">
+<button class="secondary" onclick="show('home')">
 ← Inicio
 </button>
 
 <h2>🏢 Conjuntos</h2>
 
-<div class="card form">
+<div class="card">
 
 <label>Nombre del conjunto</label>
 
-<input
-id="conjuntoNombre"
-placeholder="Ejemplo: Conjunto Arrayanes">
+<input id="cn" placeholder="Ej. Arrayanes">
 
 <label>Dirección</label>
 
-<input
-id="conjuntoDireccion"
-placeholder="Dirección o ubicación">
+<input id="cd" placeholder="Dirección">
+
+<label>Administrador</label>
+
+<input id="ca" placeholder="Nombre del administrador">
+
+<label>WhatsApp / teléfono</label>
+
+<input id="ct" placeholder="Solo como referencia">
 
 <label>Observaciones</label>
 
-<textarea
-id="conjuntoObservacion"
-placeholder="Información adicional"></textarea>
+<textarea id="co"></textarea>
 
-<div class="actions">
-
-<button class="primary" onclick="agregarConjunto()">
+<button class="primary" onclick="addConjunto()">
 ➕ Agregar conjunto
 </button>
 
 </div>
 
-</div>
-
 <div class="card">
 
-<h3>Conjuntos registrados</h3>
+<b>Conjuntos registrados</b>
 
-<div id="listaConjuntos"></div>
+<div id="conjuntoList"></div>
 
 </div>
 
 </section>
 
 
-<!-- ================= PERSONAL ================= -->
+<!-- PERSONAL -->
 
 <section id="personal" class="screen">
 
-<button class="secondary" onclick="showScreen('home')">
+<button class="secondary" onclick="show('home')">
 ← Inicio
 </button>
 
 <h2>👮 Personal</h2>
 
-<div class="card form">
+<div class="card">
 
-<label>Nombre completo</label>
+<label>Nombre</label>
 
-<input
-id="guardaNombre"
-placeholder="Nombre del guarda">
+<input id="gn">
 
 <label>Teléfono</label>
 
-<input
-id="guardaTelefono"
-placeholder="Opcional">
+<input id="gt">
 
-<label>Conjunto asignado</label>
+<label>Conjunto</label>
 
-<select id="guardaConjunto">
-<option value="">Seleccionar conjunto</option>
-</select>
+<select id="gc"></select>
 
 <label>Turno</label>
 
-<select id="guardaTurno">
+<select id="gh">
 
 <option>06:00 - 18:00</option>
-
 <option>18:00 - 06:00</option>
-
 <option>Otro</option>
 
 </select>
 
-<div class="actions">
-
-<button class="primary" onclick="agregarGuarda()">
+<button class="primary" onclick="addGuarda()">
 ➕ Agregar guarda
 </button>
 
 </div>
 
-</div>
-
 <div class="card">
 
-<h3>Personal registrado</h3>
+<b>Personal registrado</b>
 
-<div id="listaGuardas"></div>
+<div id="guardList"></div>
 
 </div>
 
 </section>
 
 
-<!-- ================= PLANILLAJES ================= -->
+<!-- WHATSAPP -->
+
+<section id="whatsapp" class="screen">
+
+<button class="secondary" onclick="show('home')">
+← Inicio
+</button>
+
+<h2>📋 Pegar WhatsApp</h2>
+
+<div class="card">
+
+<p class="muted">
+Copia el mensaje de WhatsApp del guarda y pégalo aquí.
+</p>
+
+<textarea
+id="wt"
+placeholder="Pega aquí el reporte..."
+></textarea>
+
+<div class="actions">
+
+<button class="primary" onclick="analizar()">
+🤖 Analizar
+</button>
+
+<button class="secondary" onclick="val('wt','')">
+Limpiar
+</button>
+
+</div>
+
+<div id="waResult"></div>
+
+</div>
+
+</section>
+
+
+<!-- PLANILLAJES -->
 
 <section id="planillas" class="screen">
 
-<button class="secondary" onclick="showScreen('home')">
+<button class="secondary" onclick="show('home')">
 ← Inicio
 </button>
 
@@ -606,152 +537,127 @@ placeholder="Opcional">
 <div class="card">
 
 <p class="muted">
-Selecciona el Excel que recibes de los conjuntos.
-La lectura automática de las columnas será incorporada en la siguiente etapa.
+Aquí registraremos los planillajes que llegan de los conjuntos.
 </p>
-
-<div class="file-box">
-
-📁
-
-<br>
-
-<strong>Seleccionar Excel</strong>
-
-<br><br>
 
 <input
 type="file"
 accept=".xlsx,.xls,.csv"
-id="excelFile"
-onchange="seleccionarExcel(this)">
+onchange="addPlanilla(this)"
+>
 
-</div>
-
-<div id="excelResult" class="result">
-
-No hay archivo seleccionado.
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h3>Estado de planillajes</h3>
-
-<div id="estadoPlanillas"></div>
+<div id="planillaList"></div>
 
 </div>
 
 </section>
 
 
-<!-- ================= CAMBIO TURNO ================= -->
+<!-- CAMBIO TURNO -->
 
 <section id="turnos" class="screen">
 
-<button class="secondary" onclick="showScreen('home')">
+<button class="secondary" onclick="show('home')">
 ← Inicio
 </button>
 
-<h2>🔄 Cambio de turno</h2>
+<h2>🔄 Cambios de turno</h2>
 
-<div class="card form">
+<div class="card">
 
 <label>Conjunto</label>
 
-<select id="turnoConjunto"></select>
+<select id="tc"></select>
 
 <label>Guarda que entrega</label>
 
-<select id="turnoEntrega"></select>
+<select id="te"></select>
 
 <label>Guarda que recibe</label>
 
-<select id="turnoRecibe"></select>
+<select id="tr"></select>
 
 <label>Hora</label>
 
-<input id="turnoHora" type="time">
+<input id="th" type="time">
 
-<label>Pendientes / novedades entregadas</label>
+<label>Pendientes / observaciones</label>
 
-<textarea id="turnoObservacion"></textarea>
+<textarea id="to"></textarea>
 
-<button class="primary" onclick="guardarTurno()">
-Guardar cambio de turno
+<button class="primary" onclick="addTurno()">
+Guardar cambio
 </button>
 
 </div>
 
-<div id="listaTurnos"></div>
+<div id="turnoList"></div>
 
 </section>
 
 
-<!-- ================= RONDAS ================= -->
+<!-- RONDAS -->
 
 <section id="rondas" class="screen">
 
-<button class="secondary" onclick="showScreen('home')">
+<button class="secondary" onclick="show('home')">
 ← Inicio
 </button>
 
 <h2>🔵 Rondas</h2>
 
-<div class="card form">
+<div class="card">
 
 <label>Conjunto</label>
 
-<select id="rondaConjunto"></select>
+<select id="rc"></select>
 
 <label>Guarda</label>
 
-<select id="rondaGuarda"></select>
+<select id="rg"></select>
 
 <label>Hora</label>
 
-<input id="rondaHora" type="time">
+<input id="rh" type="time">
 
-<label>Resultado / observaciones</label>
+<label>Resultado</label>
 
-<textarea id="rondaObservacion"></textarea>
+<textarea id="ro"></textarea>
 
-<button class="primary" onclick="guardarRonda()">
+<button class="primary" onclick="addRonda()">
 Registrar ronda
 </button>
 
 </div>
 
-<div id="listaRondas"></div>
+<div id="rondaList"></div>
 
 </section>
 
 
-<!-- ================= NOVEDADES ================= -->
+<!-- NOVEDADES -->
 
 <section id="novedades" class="screen">
 
-<button class="secondary" onclick="showScreen('home')">
+<button class="secondary" onclick="show('home')">
 ← Inicio
 </button>
 
 <h2>📝 Novedades</h2>
 
-<div class="card form">
+<div class="card">
 
 <label>Conjunto</label>
 
-<select id="novedadConjunto"></select>
+<select id="nc"></select>
 
 <label>Guarda</label>
 
-<select id="novedadGuarda"></select>
+<select id="ng"></select>
 
 <label>Prioridad</label>
 
-<select id="novedadPrioridad">
+<select id="np">
 
 <option>Alta</option>
 <option selected>Media</option>
@@ -761,42 +667,42 @@ Registrar ronda
 
 <label>Descripción</label>
 
-<textarea id="novedadDescripcion"></textarea>
+<textarea id="nd"></textarea>
 
-<button class="primary" onclick="guardarNovedad()">
+<button class="primary" onclick="addNovedad()">
 Guardar novedad
 </button>
 
 </div>
 
-<div id="listaNovedades"></div>
+<div id="novedadList"></div>
 
 </section>
 
 
-<!-- ================= REQUERIMIENTOS ================= -->
+<!-- REQUERIMIENTOS -->
 
-<section id="requerimientos" class="screen">
+<section id="req" class="screen">
 
-<button class="secondary" onclick="showScreen('home')">
+<button class="secondary" onclick="show('home')">
 ← Inicio
 </button>
 
-<h2>🛠️ Requerimientos a supervisión</h2>
+<h2>🛠️ Requerimientos</h2>
 
-<div class="card form">
+<div class="card">
 
 <label>Conjunto</label>
 
-<select id="requerimientoConjunto"></select>
+<select id="qc"></select>
 
 <label>Solicitado por</label>
 
-<select id="requerimientoGuarda"></select>
+<select id="qg"></select>
 
 <label>Tipo</label>
 
-<select id="requerimientoTipo">
+<select id="qt">
 
 <option>Mantenimiento</option>
 <option>Seguridad</option>
@@ -804,14 +710,13 @@ Guardar novedad
 <option>Dotación</option>
 <option>Minutas</option>
 <option>Vehicular</option>
-<option>Documentación</option>
 <option>Otro</option>
 
 </select>
 
 <label>Prioridad</label>
 
-<select id="requerimientoPrioridad">
+<select id="qp">
 
 <option>Alta</option>
 <option selected>Media</option>
@@ -821,169 +726,195 @@ Guardar novedad
 
 <label>Descripción</label>
 
-<textarea id="requerimientoDescripcion"></textarea>
+<textarea id="qd"></textarea>
 
-<button class="primary" onclick="guardarRequerimiento()">
+<button class="primary" onclick="addReq()">
 Guardar requerimiento
 </button>
 
 </div>
 
-<div id="listaRequerimientos"></div>
+<div id="reqList"></div>
 
 </section>
 
 
-<!-- ================= MINUTAS ================= -->
+<!-- MINUTAS -->
 
 <section id="minutas" class="screen">
 
-<button class="secondary" onclick="showScreen('home')">
+<button class="secondary" onclick="show('home')">
 ← Inicio
 </button>
 
-<h2>📒 Solicitud de minutas</h2>
+<h2>📒 Minutas</h2>
 
-<div class="card form">
+<div class="card">
 
 <label>Conjunto</label>
 
-<select id="minutaConjunto"></select>
-
-<label>Solicitado por</label>
-
-<select id="minutaGuarda"></select>
-
-<label>Cantidad</label>
-
-<input
-id="minutaCantidad"
-type="number"
-min="1"
-value="1">
-
-<label>Observación</label>
-
-<textarea id="minutaObservacion"></textarea>
-
-<button class="primary" onclick="guardarMinuta()">
-Guardar solicitud
-</button>
-
-</div>
-
-<div id="listaMinutas"></div>
-
-</section>
-
-
-<!-- ================= DOTACION ================= -->
-
-<section id="dotacion" class="screen">
-
-<button class="secondary" onclick="showScreen('home')">
-← Inicio
-</button>
-
-<h2>👕 Solicitud de dotación</h2>
-
-<div class="card form">
+<select id="mc"></select>
 
 <label>Guarda</label>
 
-<select id="dotacionGuarda"></select>
+<select id="mg"></select>
 
-<label>Conjunto</label>
+<label>Cantidad</label>
 
-<select id="dotacionConjunto"></select>
-
-<label>Elemento</label>
-
-<input
-id="dotacionElemento"
-placeholder="Ejemplo: camisa">
-
-<label>Talla / cantidad</label>
-
-<input
-id="dotacionTalla"
-placeholder="Ejemplo: L / 1">
+<input id="mqty" type="number" min="1" value="1">
 
 <label>Observación</label>
 
-<textarea id="dotacionObservacion"></textarea>
+<textarea id="mo"></textarea>
 
-<button class="primary" onclick="guardarDotacion()">
+<button class="primary" onclick="addMinuta()">
 Guardar solicitud
 </button>
 
 </div>
 
-<div id="listaDotacion"></div>
+<div id="minutaList"></div>
 
 </section>
 
 
-<!-- ================= INFORMES ================= -->
+<!-- DOTACION -->
 
-<section id="reportes" class="screen">
+<section id="dotacion" class="screen">
 
-<button class="secondary" onclick="showScreen('home')">
+<button class="secondary" onclick="show('home')">
+← Inicio
+</button>
+
+<h2>👕 Dotación</h2>
+
+<div class="card">
+
+<label>Conjunto</label>
+
+<select id="dc"></select>
+
+<label>Guarda</label>
+
+<select id="dg"></select>
+
+<label>Elemento</label>
+
+<input id="de" placeholder="Camisa, pantalón...">
+
+<label>Talla / cantidad</label>
+
+<input id="dt">
+
+<label>Observación</label>
+
+<textarea id="do"></textarea>
+
+<button class="primary" onclick="addDot()">
+Guardar solicitud
+</button>
+
+</div>
+
+<div id="dotList"></div>
+
+</section>
+
+
+<!-- INFORMES -->
+
+<section id="informes" class="screen">
+
+<button class="secondary" onclick="show('home')">
 ← Inicio
 </button>
 
 <h2>📊 Informes</h2>
 
+
 <div class="card">
 
-<h3>Informe general</h3>
+<h3>📩 Informe para administrador</h3>
 
 <p class="muted">
-La aplicación reunirá la información del turno y generará un resumen.
+Selecciona el conjunto. La aplicación generará únicamente la información de ese puesto.
 </p>
 
-<button class="primary" onclick="generarInforme()">
-📄 Generar informe
+<label>Puesto / conjunto</label>
+
+<select id="reportSet" onchange="previewPuesto()"></select>
+
+<div class="actions">
+
+<button class="primary" onclick="copiarPuesto()">
+📋 COPIAR INFORME DEL PUESTO
 </button>
 
-<div id="informeResultado"></div>
+</div>
+
+<div
+id="puestoPreview"
+class="result"
+>
+Selecciona un conjunto.
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>📊 Informe general para mi jefe</h3>
+
+<p class="muted">
+Un solo informe con todos los puestos de PROGRESAR SECURITY.
+</p>
+
+<div class="actions">
+
+<button class="primary" onclick="copiarGeneral()">
+📋 COPIAR INFORME GENERAL
+</button>
+
+</div>
+
+<div
+id="generalPreview"
+class="result"
+>
+Pulsa el botón para generar el informe general.
+</div>
 
 </div>
 
 </section>
 
 
-<!-- ================= CONFIGURACION ================= -->
+<!-- CONFIGURACION -->
 
 <section id="config" class="screen">
 
-<button class="secondary" onclick="showScreen('home')">
+<button class="secondary" onclick="show('home')">
 ← Inicio
 </button>
 
 <h2>⚙️ Configuración</h2>
 
-<div class="card form">
+<div class="card">
 
 <label>Nombre de la aplicación</label>
 
-<input
-id="configNombre"
-placeholder="Supervisor Plata">
+<input id="appn">
 
-<label>Nombre del supervisor</label>
+<label>Supervisor</label>
 
-<input
-id="configSupervisor"
-placeholder="Carlos">
+<input id="sup">
 
 <label>Empresa</label>
 
-<input
-id="configEmpresa"
-placeholder="Nombre de la empresa">
+<input id="emp">
 
-<button class="primary" onclick="guardarConfiguracion()">
+<button class="primary" onclick="saveConfig()">
 Guardar configuración
 </button>
 
@@ -991,21 +922,8 @@ Guardar configuración
 
 <div class="card">
 
-<h3>💾 Información</h3>
-
-<p class="muted">
-Esta primera versión guarda la información en el navegador.
-Más adelante conectaremos Firebase para que la información quede almacenada en la nube.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>⚠️ Zona de prueba</h3>
-
-<button class="danger-btn" onclick="borrarDatos()">
-Borrar todos los datos
+<button class="danger" onclick="resetData()">
+⚠️ Borrar todos los datos
 </button>
 
 </div>
@@ -1015,47 +933,41 @@ Borrar todos los datos
 </main>
 
 
-<!-- ================= MENU INFERIOR ================= -->
-
 <nav class="bottom">
 
-<div class="bottom-nav">
+<div class="nav">
 
 <button
-id="navInicio"
+id="n1"
 class="active"
-onclick="showScreen('home')">
-
+onclick="show('home')"
+>
 <b>🏠</b>
 Inicio
-
 </button>
 
 <button
-id="navOperacion"
-onclick="showScreen('novedades')">
-
+id="n2"
+onclick="show('novedades')"
+>
 <b>📝</b>
 Operación
-
 </button>
 
 <button
-id="navSolicitudes"
-onclick="showScreen('requerimientos')">
-
+id="n3"
+onclick="show('req')"
+>
 <b>🛠️</b>
 Solicitudes
-
 </button>
 
 <button
-id="navInformes"
-onclick="showScreen('reportes')">
-
+id="n4"
+onclick="show('informes')"
+>
 <b>📊</b>
 Informes
-
 </button>
 
 </div>
@@ -1067,1547 +979,1330 @@ Informes
 
 <script>
 
-/* =====================================================
-   BASE DE DATOS LOCAL
-===================================================== */
+const KEY="supervisorPlataV3";
 
-const STORAGE_KEY="supervisorPlataData";
-
-const datosIniciales={
- conjuntos:[],
- guardas:[],
- turnos:[],
- rondas:[],
- novedades:[],
- requerimientos:[],
- minutas:[],
- dotacion:[],
- planillas:[],
- configuracion:{
-  nombre:"SUPERVISOR PLATA",
-  supervisor:"Carlos",
-  empresa:""
- }
+const base={
+conjuntos:[],
+guardas:[],
+turnos:[],
+rondas:[],
+novedades:[],
+requerimientos:[],
+minutas:[],
+dotacion:[],
+planillas:[],
+config:{
+nombre:"SUPERVISOR PLATA",
+supervisor:"Supervisor Plata",
+empresa:"PROGRESAR SECURITY"
+}
 };
 
 let db=JSON.parse(
- localStorage.getItem(STORAGE_KEY)
-)||JSON.parse(JSON.stringify(datosIniciales));
+localStorage.getItem(KEY)||"null"
+)||base;
 
-/* Compatibilidad */
-db.conjuntos=db.conjuntos||[];
-db.guardas=db.guardas||[];
-db.turnos=db.turnos||[];
-db.rondas=db.rondas||[];
-db.novedades=db.novedades||[];
-db.requerimientos=db.requerimientos||[];
-db.minutas=db.minutas||[];
-db.dotacion=db.dotacion||[];
-db.planillas=db.planillas||[];
-db.configuracion=db.configuracion||datosIniciales.configuracion;
+function $(id){
+return document.getElementById(id);
+}
 
+function val(id,x){
 
-/* =====================================================
-   FUNCIONES GENERALES
-===================================================== */
+if(x===undefined){
 
-function guardarDB(){
-
- localStorage.setItem(
-  STORAGE_KEY,
-  JSON.stringify(db)
- );
-
- renderizar();
+return ($(id)?.value||"").trim();
 
 }
 
-function obtener(id){
-
- const elemento=document.getElementById(id);
-
- return elemento ? elemento.value.trim() : "";
+$(id).value=x;
 
 }
 
-function fechaActual(){
+function save(){
 
- return new Date().toLocaleString(
-  "es-CO",
-  {
-   dateStyle:"short",
-   timeStyle:"short"
-  }
- );
+localStorage.setItem(
+KEY,
+JSON.stringify(db)
+);
+
+render();
 
 }
 
-function escapar(texto){
+function now(){
 
- return String(texto||"")
- .replace(/&/g,"&amp;")
- .replace(/</g,"&lt;")
- .replace(/>/g,"&gt;")
- .replace(/"/g,"&quot;")
- .replace(/'/g,"&#039;");
+return new Date().toLocaleString(
+"es-CO",
+{
+dateStyle:"short",
+timeStyle:"short"
+}
+);
 
 }
 
 
-/* =====================================================
-   NAVEGACION
-===================================================== */
+function show(id){
 
-function showScreen(id){
+document
+.querySelectorAll(".screen")
+.forEach(x=>x.classList.remove("active"));
 
- document
- .querySelectorAll(".screen")
- .forEach(s=>s.classList.remove("active"));
+$(id).classList.add("active");
 
- document
- .getElementById(id)
- .classList.add("active");
+document
+.querySelectorAll(".nav button")
+.forEach(x=>x.classList.remove("active"));
 
+if(id=="home")
+$("n1").classList.add("active");
 
- document
- .querySelectorAll(".bottom button")
- .forEach(b=>b.classList.remove("active"));
+else if(id=="informes")
+$("n4").classList.add("active");
 
+else if(
+["req","minutas","dotacion"].includes(id)
+)
+$("n3").classList.add("active");
 
- if(id==="home"){
+else
+$("n2").classList.add("active");
 
-  document
-  .getElementById("navInicio")
-  .classList.add("active");
+render();
 
- }
-
- else if(
-  id==="requerimientos"||
-  id==="minutas"||
-  id==="dotacion"
- ){
-
-  document
-  .getElementById("navSolicitudes")
-  .classList.add("active");
-
- }
-
- else if(id==="reportes"){
-
-  document
-  .getElementById("navInformes")
-  .classList.add("active");
-
- }
-
- else{
-
-  document
-  .getElementById("navOperacion")
-  .classList.add("active");
-
- }
-
-
- renderizar();
-
- window.scrollTo({
-  top:0,
-  behavior:"smooth"
- });
+window.scrollTo(0,0);
 
 }
 
 
-/* =====================================================
-   CONJUNTOS
-===================================================== */
+function optsSets(){
 
-function agregarConjunto(){
+return `<option value="">
+Seleccionar conjunto
+</option>`+
 
- const nombre=obtener("conjuntoNombre");
-
- if(!nombre){
-
-  alert("Escribe el nombre del conjunto.");
-
-  return;
-
- }
-
- db.conjuntos.unshift({
-
-  id:Date.now(),
-
-  nombre:nombre,
-
-  direccion:obtener("conjuntoDireccion"),
-
-  observacion:obtener("conjuntoObservacion"),
-
-  activo:true,
-
-  fecha:fechaActual()
-
- });
-
- document.getElementById("conjuntoNombre").value="";
- document.getElementById("conjuntoDireccion").value="";
- document.getElementById("conjuntoObservacion").value="";
-
- guardarDB();
-
-}
-
-function cambiarEstadoConjunto(id){
-
- const conjunto=db.conjuntos.find(
-  c=>String(c.id)===String(id)
- );
-
- if(conjunto){
-
-  conjunto.activo=!conjunto.activo;
-
-  guardarDB();
-
- }
+db.conjuntos
+.filter(x=>x.activo)
+.map(x=>
+`<option>${x.nombre}</option>`
+)
+.join("");
 
 }
 
 
-/* =====================================================
-   PERSONAL
-===================================================== */
+function optsGuards(){
 
-function agregarGuarda(){
+return `<option value="">
+Seleccionar guarda
+</option>`+
 
- const nombre=obtener("guardaNombre");
-
- if(!nombre){
-
-  alert("Escribe el nombre del guarda.");
-
-  return;
-
- }
-
- db.guardas.unshift({
-
-  id:Date.now(),
-
-  nombre:nombre,
-
-  telefono:obtener("guardaTelefono"),
-
-  conjunto:obtener("guardaConjunto"),
-
-  turno:obtener("guardaTurno"),
-
-  activo:true,
-
-  fecha:fechaActual()
-
- });
-
- document.getElementById("guardaNombre").value="";
- document.getElementById("guardaTelefono").value="";
-
- guardarDB();
-
-}
-
-function cambiarEstadoGuarda(id){
-
- const guarda=db.guardas.find(
-  g=>String(g.id)===String(id)
- );
-
- if(guarda){
-
-  guarda.activo=!guarda.activo;
-
-  guardarDB();
-
- }
+db.guardas
+.filter(x=>x.activo)
+.map(x=>
+`<option>${x.nombre}</option>`
+)
+.join("");
 
 }
 
 
-/* =====================================================
-   REGISTROS
-===================================================== */
+function setSelects(){
 
-function guardarTurno(){
+[
+"gc",
+"tc",
+"rc",
+"nc",
+"qc",
+"mc",
+"dc",
+"reportSet"
+].forEach(id=>{
 
- const conjunto=obtener("turnoConjunto");
+if($(id))
+$(id).innerHTML=optsSets();
 
- if(!conjunto){
+});
 
-  alert("Selecciona un conjunto.");
 
-  return;
+[
+"te",
+"tr",
+"rg",
+"ng",
+"qg",
+"mg",
+"dg"
+].forEach(id=>{
 
- }
+if($(id))
+$(id).innerHTML=optsGuards();
 
- db.turnos.unshift({
-
-  id:Date.now(),
-
-  conjunto:conjunto,
-
-  entrega:obtener("turnoEntrega"),
-
-  recibe:obtener("turnoRecibe"),
-
-  hora:obtener("turnoHora"),
-
-  observacion:obtener("turnoObservacion"),
-
-  estado:"Registrado",
-
-  fecha:fechaActual()
-
- });
-
- guardarDB();
-
- alert("Cambio de turno registrado.");
+});
 
 }
 
 
-function guardarRonda(){
+function addConjunto(){
 
- const conjunto=obtener("rondaConjunto");
+if(!val("cn")){
 
- if(!conjunto){
+alert("Escribe el nombre del conjunto.");
 
-  alert("Selecciona un conjunto.");
+return;
 
-  return;
+}
 
- }
+db.conjuntos.unshift({
 
- db.rondas.unshift({
+id:Date.now(),
 
-  id:Date.now(),
+nombre:val("cn"),
 
-  conjunto:conjunto,
+direccion:val("cd"),
 
-  guarda:obtener("rondaGuarda"),
+admin:val("ca"),
 
-  hora:obtener("rondaHora"),
+tel:val("ct"),
 
-  observacion:obtener("rondaObservacion"),
+obs:val("co"),
 
-  estado:"Realizada",
+activo:true,
 
-  fecha:fechaActual()
+fecha:now()
 
- });
+});
 
- guardarDB();
+[
+"cn",
+"cd",
+"ca",
+"ct",
+"co"
+].forEach(x=>val(x,""));
+
+save();
 
 }
 
 
-function guardarNovedad(){
+function toggleSet(id){
 
- const conjunto=obtener("novedadConjunto");
+let x=db.conjuntos.find(
+x=>x.id==id
+);
 
- const descripcion=obtener("novedadDescripcion");
+if(x){
 
- if(!conjunto||!descripcion){
+x.activo=!x.activo;
 
-  alert("Completa conjunto y descripción.");
+save();
 
-  return;
-
- }
-
- db.novedades.unshift({
-
-  id:Date.now(),
-
-  conjunto:conjunto,
-
-  guarda:obtener("novedadGuarda"),
-
-  prioridad:obtener("novedadPrioridad"),
-
-  descripcion:descripcion,
-
-  estado:"Pendiente",
-
-  fecha:fechaActual()
-
- });
-
- guardarDB();
+}
 
 }
 
 
-function guardarRequerimiento(){
+function addGuarda(){
 
- const conjunto=obtener("requerimientoConjunto");
+if(!val("gn")){
 
- const descripcion=obtener("requerimientoDescripcion");
+alert("Escribe el nombre.");
 
- if(!conjunto||!descripcion){
+return;
 
-  alert("Completa conjunto y descripción.");
+}
 
-  return;
+db.guardas.unshift({
 
- }
+id:Date.now(),
 
- db.requerimientos.unshift({
+nombre:val("gn"),
 
-  id:Date.now(),
+telefono:val("gt"),
 
-  conjunto:conjunto,
+conjunto:val("gc"),
 
-  guarda:obtener("requerimientoGuarda"),
+turno:val("gh"),
 
-  tipo:obtener("requerimientoTipo"),
+activo:true,
 
-  prioridad:obtener("requerimientoPrioridad"),
+fecha:now()
 
-  descripcion:descripcion,
+});
 
-  estado:"Pendiente",
+val("gn","");
 
-  fecha:fechaActual()
+val("gt","");
 
- });
-
- guardarDB();
+save();
 
 }
 
 
-function guardarMinuta(){
+function toggleGuard(id){
 
- const conjunto=obtener("minutaConjunto");
+let x=db.guardas.find(
+x=>x.id==id
+);
 
- if(!conjunto){
+if(x){
 
-  alert("Selecciona un conjunto.");
+x.activo=!x.activo;
 
-  return;
+save();
 
- }
-
- db.minutas.unshift({
-
-  id:Date.now(),
-
-  conjunto:conjunto,
-
-  guarda:obtener("minutaGuarda"),
-
-  cantidad:obtener("minutaCantidad"),
-
-  observacion:obtener("minutaObservacion"),
-
-  estado:"Pendiente",
-
-  fecha:fechaActual()
-
- });
-
- guardarDB();
+}
 
 }
 
 
-function guardarDotacion(){
+function addTurno(){
 
- const guarda=obtener("dotacionGuarda");
+if(!val("tc")){
 
- const conjunto=obtener("dotacionConjunto");
+alert("Selecciona conjunto.");
 
- const elemento=obtener("dotacionElemento");
+return;
 
- if(!guarda||!conjunto||!elemento){
+}
 
-  alert("Completa guarda, conjunto y elemento.");
+db.turnos.unshift({
 
-  return;
+id:Date.now(),
 
- }
+conjunto:val("tc"),
 
- db.dotacion.unshift({
+entrega:val("te"),
 
-  id:Date.now(),
+recibe:val("tr"),
 
-  guarda:guarda,
+hora:val("th"),
 
-  conjunto:conjunto,
+obs:val("to"),
 
-  elemento:elemento,
+fecha:now()
 
-  talla:obtener("dotacionTalla"),
+});
 
-  observacion:obtener("dotacionObservacion"),
-
-  estado:"Pendiente",
-
-  fecha:fechaActual()
-
- });
-
- guardarDB();
+save();
 
 }
 
 
-/* =====================================================
-   CAMBIAR ESTADO
-===================================================== */
+function addRonda(){
 
-function resolver(tipo,id){
+if(!val("rc")){
 
- const lista=db[tipo];
+alert("Selecciona conjunto.");
 
- const registro=lista.find(
-  x=>String(x.id)===String(id)
- );
+return;
 
- if(registro){
+}
 
-  registro.estado="Resuelto";
+db.rondas.unshift({
 
-  guardarDB();
+id:Date.now(),
 
- }
+conjunto:val("rc"),
+
+guarda:val("rg"),
+
+hora:val("rh"),
+
+obs:val("ro"),
+
+fecha:now()
+
+});
+
+save();
 
 }
 
 
-/* =====================================================
-   WHATSAPP
-===================================================== */
+function addNovedad(){
 
-function analizarWhatsApp(){
+if(!val("nc")||!val("nd")){
 
- const texto=obtener("whatsappText");
+alert(
+"Completa conjunto y descripción."
+);
 
- if(!texto){
+return;
 
-  alert("Pega primero el mensaje.");
+}
 
-  return;
+db.novedades.unshift({
 
- }
+id:Date.now(),
 
- const lower=texto.toLowerCase();
+conjunto:val("nc"),
 
- let tipo="REQUERIMIENTO";
+guarda:val("ng"),
 
- if(lower.includes("novedad"))
-  tipo="NOVEDAD";
+prioridad:val("np"),
 
- else if(lower.includes("minuta"))
-  tipo="MINUTA";
+descripcion:val("nd"),
 
- else if(lower.includes("dotacion")||
-         lower.includes("dotación"))
-  tipo="DOTACIÓN";
+estado:"Pendiente",
 
- else if(lower.includes("ronda"))
-  tipo="RONDA";
+fecha:now()
 
- else if(lower.includes("planillaje"))
-  tipo="PLANILLAJE";
+});
 
- else if(lower.includes("cambio de turno")||
-        lower.includes("entrega de turno"))
-  tipo="CAMBIO DE TURNO";
-
-
- let prioridad="Media";
-
- if(
-  lower.includes("urgente")||
-  lower.includes("emergencia")||
-  lower.includes("alta prioridad")
- ){
-
-  prioridad="Alta";
-
- }
-
-
- document.getElementById("whatsappResult").innerHTML=`
-
- <div class="result">
-
- <strong>🤖 Información detectada</strong>
-
- <p>
- <b>Tipo:</b> ${tipo}
- </p>
-
- <p>
- <b>Prioridad sugerida:</b> ${prioridad}
- </p>
-
- <p class="muted">
- ${escapar(texto)}
- </p>
-
- <div class="actions">
-
- <button
- class="primary"
- onclick="crearDesdeWhatsApp('${tipo}','${prioridad}')">
-
- Crear registro
-
- </button>
-
- </div>
-
- </div>
-
- `;
+save();
 
 }
 
 
-function crearDesdeWhatsApp(tipo,prioridad){
+function addReq(){
 
- const texto=obtener("whatsappText");
+if(!val("qc")||!val("qd")){
 
- const base={
+alert(
+"Completa conjunto y descripción."
+);
 
-  id:Date.now(),
+return;
 
-  conjunto:"Por identificar",
+}
 
-  guarda:"WhatsApp",
+db.requerimientos.unshift({
 
-  descripcion:texto,
+id:Date.now(),
 
-  prioridad:prioridad,
+conjunto:val("qc"),
 
-  estado:"Pendiente",
+guarda:val("qg"),
 
-  fecha:fechaActual()
+tipo:val("qt"),
 
- };
+prioridad:val("qp"),
 
+descripcion:val("qd"),
 
- if(tipo==="NOVEDAD"){
+estado:"Pendiente",
 
-  db.novedades.unshift(base);
+fecha:now()
 
- }
+});
 
- else if(tipo==="MINUTA"){
-
-  db.minutas.unshift({
-
-   ...base,
-
-   cantidad:1,
-   observacion:texto
-
-  });
-
- }
-
- else if(tipo==="DOTACIÓN"){
-
-  db.dotacion.unshift({
-
-   ...base,
-
-   elemento:"Por identificar",
-   talla:""
-
-  });
-
- }
-
- else{
-
-  db.requerimientos.unshift({
-
-   ...base,
-
-   tipo:tipo
-
-  });
-
- }
-
- guardarDB();
-
- alert("Registro creado. Revísalo y completa los datos.");
+save();
 
 }
 
 
-/* =====================================================
-   EXCEL
-===================================================== */
+function addMinuta(){
 
-function seleccionarExcel(input){
+if(!val("mc")){
 
- if(!input.files.length)
-  return;
+alert("Selecciona conjunto.");
 
- const archivo=input.files[0];
+return;
 
- db.planillas.unshift({
+}
 
-  id:Date.now(),
+db.minutas.unshift({
 
-  archivo:archivo.name,
+id:Date.now(),
 
-  fecha:fechaActual(),
+conjunto:val("mc"),
 
-  estado:"Recibido"
+guarda:val("mg"),
 
- });
+cantidad:val("mqty"),
 
- guardarDB();
+obs:val("mo"),
 
- document.getElementById("excelResult").innerHTML=`
+estado:"Pendiente",
 
- <strong>📎 ${escapar(archivo.name)}</strong>
+fecha:now()
 
- <p class="muted">
- Archivo recibido correctamente.
- </p>
+});
 
- `;
+save();
 
 }
 
 
-/* =====================================================
-   INFORME
-===================================================== */
+function addDot(){
 
-function generarInforme(){
+if(
+!val("dc")||
+!val("dg")||
+!val("de")
+){
 
- const pendientes=[
+alert(
+"Completa conjunto, guarda y elemento."
+);
 
-  ...db.novedades,
+return;
 
-  ...db.requerimientos,
+}
 
-  ...db.minutas,
+db.dotacion.unshift({
 
-  ...db.dotacion
+id:Date.now(),
 
- ].filter(x=>x.estado==="Pendiente");
+conjunto:val("dc"),
+
+guarda:val("dg"),
+
+elemento:val("de"),
+
+talla:val("dt"),
+
+obs:val("do"),
+
+estado:"Pendiente",
+
+fecha:now()
+
+});
+
+save();
+
+}
 
 
- let informe=`
+function addPlanilla(input){
 
+if(!input.files.length)
+return;
+
+db.planillas.unshift({
+
+id:Date.now(),
+
+archivo:input.files[0].name,
+
+fecha:now(),
+
+estado:"Recibido"
+
+});
+
+save();
+
+alert(
+"Planillaje recibido."
+);
+
+}
+
+
+function resolve(type,id){
+
+let x=db[type].find(
+x=>x.id==id
+);
+
+if(x){
+
+x.estado="Resuelto";
+
+save();
+
+}
+
+}
+
+
+function renderList(type){
+
+let a=db[type];
+
+if(!a.length){
+
+return `
+<div class="empty">
+No hay registros.
+</div>
+`;
+
+}
+
+return a.map(x=>`
+
+<div class="item">
+
+<div class="row">
+
+<b>
+${x.conjunto||"Sin conjunto"}
+</b>
+
+<span
+class="badge ${x.estado=="Pendiente"?"pending":""}"
+>
+${x.estado||"Registrado"}
+</span>
+
+</div>
+
+${x.guarda?
+`<p>👮 ${x.guarda}</p>`:""}
+
+${x.prioridad?
+`<p>🚨 ${x.prioridad}</p>`:""}
+
+${x.tipo?
+`<p>📂 ${x.tipo}</p>`:""}
+
+${x.elemento?
+`<p>👕 ${x.elemento}</p>`:""}
+
+<p>
+${x.descripcion||x.obs||""}
+</p>
+
+<small class="muted">
+${x.fecha}
+</small>
+
+${x.estado=="Pendiente"?
+
+`<div class="actions">
+
+<button
+class="secondary"
+onclick="resolve('${type}',${x.id})"
+>
+✅ Marcar resuelto
+</button>
+
+</div>`
+
+:""}
+
+</div>
+
+`).join("");
+
+}
+
+
+function analizar(){
+
+let t=val("wt");
+
+if(!t){
+
+alert(
+"Pega primero el mensaje."
+);
+
+return;
+
+}
+
+let l=t.toLowerCase();
+
+let tipo=
+
+l.includes("novedad")
+?"NOVEDAD":
+
+l.includes("ronda")
+?"RONDA":
+
+l.includes("minuta")
+?"MINUTA":
+
+l.includes("dotación")||
+l.includes("dotacion")
+?"DOTACIÓN":
+
+l.includes("planillaje")
+?"PLANILLAJE":
+
+l.includes("cambio de turno")
+?"CAMBIO DE TURNO":
+
+"REQUERIMIENTO";
+
+let p=
+
+/urgente|emergencia|alta prioridad/
+.test(l)
+?"Alta"
+:"Media";
+
+
+$("waResult").innerHTML=`
+
+<div class="result">
+
+<b>Tipo detectado:</b>
+${tipo}
+
+<br>
+
+<b>Prioridad:</b>
+${p}
+
+<br><br>
+
+${t}
+
+<div class="actions">
+
+<button
+class="primary"
+onclick="createWA('${tipo}','${p}')"
+>
+Crear registro
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+function createWA(tipo,p){
+
+let x={
+
+id:Date.now(),
+
+conjunto:"Por identificar",
+
+guarda:"WhatsApp",
+
+descripcion:val("wt"),
+
+prioridad:p,
+
+estado:"Pendiente",
+
+fecha:now()
+
+};
+
+if(tipo=="NOVEDAD")
+
+db.novedades.unshift(x);
+
+else
+
+db.requerimientos.unshift({
+
+...x,
+
+tipo
+
+});
+
+save();
+
+alert(
+"Registro creado. Revísalo en el módulo correspondiente."
+);
+
+}
+
+
+function saveConfig(){
+
+db.config.nombre=val("appn");
+
+db.config.supervisor=val("sup");
+
+db.config.empresa=val("emp");
+
+save();
+
+alert(
+"Configuración guardada."
+);
+
+}
+
+
+function dataForSet(n){
+
+return{
+
+turnos:db.turnos.filter(
+x=>x.conjunto==n
+),
+
+rondas:db.rondas.filter(
+x=>x.conjunto==n
+),
+
+novedades:db.novedades.filter(
+x=>x.conjunto==n
+),
+
+req:db.requerimientos.filter(
+x=>x.conjunto==n
+),
+
+minutas:db.minutas.filter(
+x=>x.conjunto==n
+),
+
+dot:db.dotacion.filter(
+x=>x.conjunto==n
+),
+
+plan:db.planillas.filter(
+x=>x.conjunto==n
+)
+
+};
+
+}
+
+
+function lines(title,a,fn){
+
+if(!a.length)
+
+return `${title}
+• Sin registros.
+`;
+
+return title+
+"\n"+
+a.map(fn).join("\n");
+
+}
+
+
+function buildPuesto(n){
+
+let c=db.conjuntos.find(
+x=>x.nombre==n
+);
+
+if(!c)
+
+return "Selecciona un conjunto.";
+
+let d=dataForSet(n);
+
+return `PROGRESAR SECURITY
 INFORME DE SUPERVISIÓN
-${db.configuracion.nombre}
 
-Fecha: ${fechaActual()}
-Supervisor: ${db.configuracion.supervisor}
-Empresa: ${db.configuracion.empresa||"No registrada"}
+PUESTO: ${n}
+ADMINISTRADOR: ${c.admin||"No registrado"}
+FECHA: ${new Date().toLocaleDateString("es-CO")}
+SUPERVISOR: ${db.config.supervisor}
 
-CONJUNTOS ACTIVOS:
-${db.conjuntos.filter(x=>x.activo).length}
+${lines(
+"CAMBIO DE TURNO",
+d.turnos,
+x=>`• Entrega: ${x.entrega||"-"} | Recibe: ${x.recibe||"-"} | Hora: ${x.hora||"-"}${x.obs?" | "+x.obs:""}`
+)}
 
-GUARDAS ACTIVOS:
-${db.guardas.filter(x=>x.activo).length}
+${lines(
+"RONDAS",
+d.rondas,
+x=>`• ${x.hora||"-"} - ${x.guarda||"-"}: ${x.obs||"Sin observación"}`
+)}
 
-CAMBIOS DE TURNO:
-${db.turnos.length}
+${lines(
+"NOVEDADES",
+d.novedades,
+x=>`• [${x.prioridad||"Media"}] ${x.descripcion||""} (${x.guarda||"Sin guarda"})`
+)}
 
-RONDAS:
-${db.rondas.length}
+${lines(
+"REQUERIMIENTOS",
+d.req,
+x=>`• [${x.prioridad||"Media"}] ${x.tipo||"General"}: ${x.descripcion||""} - ${x.estado||""}`
+)}
 
-NOVEDADES:
-${db.novedades.length}
+${lines(
+"MINUTAS",
+d.minutas,
+x=>`• ${x.cantidad||1} unidad(es) - ${x.guarda||"Sin guarda"}: ${x.obs||""} - ${x.estado||""}`
+)}
 
-REQUERIMIENTOS:
-${db.requerimientos.length}
+${lines(
+"DOTACIÓN",
+d.dot,
+x=>`• ${x.guarda||"Sin guarda"} - ${x.elemento||""} ${x.talla||""}: ${x.obs||""} - ${x.estado||""}`
+)}
 
-MINUTAS:
-${db.minutas.length}
+${lines(
+"PLANILLAJE VEHICULAR",
+d.plan,
+x=>`• Archivo recibido: ${x.archivo} - ${x.fecha}`
+)}
 
-DOTACIÓN:
-${db.dotacion.length}
+PENDIENTES: ${
+[
+...d.novedades,
+...d.req,
+...d.minutas,
+...d.dot
+].filter(
+x=>x.estado=="Pendiente"
+).length
+}
 
-PLANILLAJES:
-${db.planillas.length}
-
-PENDIENTES:
-${pendientes.length}
-
- `;
-
- document.getElementById("informeResultado").innerHTML=`
-
- <div class="result">
-
- <pre style="
- white-space:pre-wrap;
- font-family:Arial;
- font-size:13px;
- ">${escapar(informe)}</pre>
-
- <button
- class="secondary"
- onclick="copiarInforme(${JSON.stringify(informe)})">
-
- 📋 Copiar informe
-
- </button>
-
- </div>
-
- `;
+SUPERVISOR PLATA
+PROGRESAR SECURITY`;
 
 }
 
 
-function copiarInforme(texto){
+function previewPuesto(){
 
- if(navigator.clipboard){
+let n=val("reportSet");
 
-  navigator.clipboard.writeText(texto);
+$("puestoPreview").textContent=
 
-  alert("Informe copiado.");
-
- }
-
-}
-
-
-/* =====================================================
-   CONFIGURACION
-===================================================== */
-
-function guardarConfiguracion(){
-
- const nombre=obtener("configNombre");
-
- if(!nombre){
-
-  alert("Escribe un nombre.");
-
-  return;
-
- }
-
- db.configuracion.nombre=nombre;
-
- db.configuracion.supervisor=
- obtener("configSupervisor");
-
- db.configuracion.empresa=
- obtener("configEmpresa");
-
- guardarDB();
-
- alert("Configuración guardada.");
+n?
+buildPuesto(n):
+"Selecciona un conjunto.";
 
 }
 
 
-function borrarDatos(){
+async function copyText(text){
 
- const confirmar=confirm(
-  "¿Seguro que quieres borrar todos los datos?"
- );
+try{
 
- if(!confirmar)
-  return;
+await navigator.clipboard.writeText(text);
 
- db=JSON.parse(
-  JSON.stringify(datosIniciales)
- );
+alert(
+"Informe copiado. Ahora pégalo en WhatsApp."
+);
 
- guardarDB();
+}
 
- alert("Datos eliminados.");
+catch(e){
+
+alert(
+"No se pudo copiar automáticamente. Mantén presionado el texto y copia."
+);
+
+}
 
 }
 
 
-/* =====================================================
-   RENDERIZADO
-===================================================== */
+function copiarPuesto(){
 
-function opcionesConjuntos(){
+let n=val("reportSet");
 
- const activos=db.conjuntos
- .filter(c=>c.activo);
+if(!n){
 
- if(!activos.length){
+alert(
+"Selecciona un conjunto."
+);
 
-  return `<option value="">
-  No hay conjuntos registrados
-  </option>`;
+return;
 
- }
+}
 
- return `
+let t=buildPuesto(n);
 
- <option value="">
- Seleccionar conjunto
- </option>
+$("puestoPreview").textContent=t;
 
- ${activos.map(c=>`
-
- <option value="${escapar(c.nombre)}">
- ${escapar(c.nombre)}
- </option>
-
- `).join("")}
-
- `;
+copyText(t);
 
 }
 
 
-function opcionesGuardas(){
+function buildGeneral(){
 
- const activos=db.guardas
- .filter(g=>g.activo);
+let active=db.conjuntos.filter(
+x=>x.activo
+);
 
- if(!activos.length){
+if(!active.length)
 
-  return `<option value="">
-  No hay guardas registrados
-  </option>`;
+return "No hay conjuntos activos.";
 
- }
+let out=`PROGRESAR SECURITY
+INFORME GENERAL DE SUPERVISIÓN
 
- return `
+FECHA: ${new Date().toLocaleDateString("es-CO")}
+SUPERVISOR: ${db.config.supervisor}
+TOTAL DE PUESTOS: ${active.length}
 
- <option value="">
- Seleccionar guarda
- </option>
+`;
 
- ${activos.map(g=>`
+active.forEach((c,i)=>{
 
- <option value="${escapar(g.nombre)}">
- ${escapar(g.nombre)}
- </option>
+out+=`
 
- `).join("")}
+========================
+PUESTO ${i+1}: ${c.nombre}
+ADMINISTRADOR: ${c.admin||"No registrado"}
+========================
+`;
 
- `;
+let d=dataForSet(c.nombre);
+
+out+=`
+
+Novedades: ${d.novedades.length}
+Requerimientos: ${d.req.length}
+Rondas: ${d.rondas.length}
+Cambios de turno: ${d.turnos.length}
+Minutas: ${d.minutas.length}
+Dotación: ${d.dot.length}
+Planillajes: ${d.plan.length}
+Pendientes: ${
+[
+...d.novedades,
+...d.req,
+...d.minutas,
+...d.dot
+].filter(
+x=>x.estado=="Pendiente"
+).length
+}
+
+`;
+
+if(d.novedades.length)
+
+out+=
+
+d.novedades
+.map(
+x=>`• Novedad: ${x.descripcion}`
+)
+.join("\n")+
+"\n";
+
+if(d.req.length)
+
+out+=
+
+d.req
+.map(
+x=>`• Requerimiento: ${x.descripcion}`
+)
+.join("\n")+
+"\n";
+
+});
+
+return out+
+
+`
+
+SUPERVISOR PLATA
+PROGRESAR SECURITY`;
 
 }
 
 
-function renderizar(){
+function copiarGeneral(){
 
- /* ENCABEZADO */
+let t=buildGeneral();
 
- document.getElementById("appName")
- .textContent=
- db.configuracion.nombre;
+$("generalPreview").textContent=t;
 
- document.getElementById("currentDate")
- .textContent=
- new Date().toLocaleDateString(
-  "es-CO",
-  {
-   weekday:"long",
-   year:"numeric",
-   month:"long",
-   day:"numeric"
-  }
- );
-
-
- /* ESTADISTICAS */
-
- const conjuntosActivos=
- db.conjuntos.filter(c=>c.activo).length;
-
- const guardasActivos=
- db.guardas.filter(g=>g.activo).length;
-
- const pendientes=[
-
-  ...db.novedades,
-
-  ...db.requerimientos,
-
-  ...db.minutas,
-
-  ...db.dotacion
-
- ].filter(x=>x.estado==="Pendiente");
-
-
- document.getElementById("totalSets")
- .textContent=conjuntosActivos;
-
- document.getElementById("totalGuards")
- .textContent=guardasActivos;
-
- document.getElementById("totalNov")
- .textContent=db.novedades.length;
-
- document.getElementById("totalPending")
- .textContent=pendientes.length;
-
- document.getElementById("pendingBadge")
- .textContent=pendientes.length;
-
-
- /* PENDIENTES */
-
- const homePending=
- document.getElementById("homePending");
-
- if(!pendientes.length){
-
-  homePending.innerHTML=
-  `<div class="empty">
-  No tienes pendientes. ✅
-  </div>`;
-
- }
-
- else{
-
-  homePending.innerHTML=
-  pendientes.slice(0,8)
-  .map(x=>`
-
-  <div class="item">
-
-  <div class="row">
-
-  <strong>
-  ${escapar(x.conjunto||"Sin conjunto")}
-  </strong>
-
-  <span class="badge badge-red">
-  Pendiente
-  </span>
-
-  </div>
-
-  <p>
-  ${escapar(
-   x.descripcion||
-   x.elemento||
-   x.observacion||
-   "Solicitud pendiente"
-  )}
-  </p>
-
-  </div>
-
-  `).join("");
-
- }
-
-
- /* CONJUNTOS */
-
- document.getElementById("listaConjuntos")
- .innerHTML=
- db.conjuntos.length
-
- ?
-
- db.conjuntos.map(c=>`
-
- <div class="item">
-
- <div class="row">
-
- <strong>
- 🏢 ${escapar(c.nombre)}
- </strong>
-
- <span class="badge ${
-  c.activo
-  ?"badge-green"
-  :"badge-red"
- }">
-
- ${c.activo?"Activo":"Inactivo"}
-
- </span>
-
- </div>
-
- ${
-  c.direccion
-  ?`<p>📍 ${escapar(c.direccion)}</p>`
-  :""
- }
-
- ${
-  c.observacion
-  ?`<p>${escapar(c.observacion)}</p>`
-  :""
- }
-
- <small class="muted">
- ${escapar(c.fecha)}
- </small>
-
- <div class="actions">
-
- <button
- class="secondary"
- onclick="cambiarEstadoConjunto(${c.id})">
-
- ${c.activo?"Desactivar":"Activar"}
-
- </button>
-
- </div>
-
- </div>
-
- `).join("")
-
- :
-
- `<div class="empty">
- Todavía no has agregado conjuntos.
- <br><br>
- Pulsa "Agregar conjunto" para comenzar.
- </div>`;
-
-
- /* PERSONAL */
-
- document.getElementById("listaGuardas")
- .innerHTML=
- db.guardas.length
-
- ?
-
- db.guardas.map(g=>`
-
- <div class="item">
-
- <div class="row">
-
- <strong>
- 👮 ${escapar(g.nombre)}
- </strong>
-
- <span class="badge ${
-  g.activo
-  ?"badge-green"
-  :"badge-red"
- }">
-
- ${g.activo?"Activo":"Inactivo"}
-
- </span>
-
- </div>
-
- <p>
- 🏢 ${escapar(g.conjunto||"Sin conjunto")}
- </p>
-
- <p>
- ⏰ ${escapar(g.turno||"")}
- </p>
-
- ${
-  g.telefono
-  ?`<p>📞 ${escapar(g.telefono)}</p>`
-  :""
- }
-
- <div class="actions">
-
- <button
- class="secondary"
- onclick="cambiarEstadoGuarda(${g.id})">
-
- ${g.activo?"Desactivar":"Activar"}
-
- </button>
-
- </div>
-
- </div>
-
- `).join("")
-
- :
-
- `<div class="empty">
- Todavía no hay guardas registrados.
- </div>`;
-
-
- /* SELECTORES */
-
- const selectsConjuntos=[
-
- "guardaConjunto",
- "turnoConjunto",
- "rondaConjunto",
- "novedadConjunto",
- "requerimientoConjunto",
- "minutaConjunto",
- "dotacionConjunto"
-
- ];
-
- selectsConjuntos.forEach(id=>{
-
-  const el=document.getElementById(id);
-
-  if(el)
-   el.innerHTML=opcionesConjuntos();
-
- });
-
-
- const selectsGuardas=[
-
- "turnoEntrega",
- "turnoRecibe",
- "rondaGuarda",
- "novedadGuarda",
- "requerimientoGuarda",
- "minutaGuarda",
- "dotacionGuarda"
-
- ];
-
- selectsGuardas.forEach(id=>{
-
-  const el=document.getElementById(id);
-
-  if(el)
-   el.innerHTML=opcionesGuardas();
-
- });
-
-
- /* TURNOS */
-
- document.getElementById("listaTurnos")
- .innerHTML=
- db.turnos.length
-
- ?
-
- db.turnos.map(t=>`
-
- <div class="item">
-
- <div class="row">
-
- <strong>
- 🏢 ${escapar(t.conjunto)}
- </strong>
-
- <span class="badge badge-green">
- Registrado
- </span>
-
- </div>
-
- <p>
- 👮 Entrega: ${escapar(t.entrega)}
- </p>
-
- <p>
- 👮 Recibe: ${escapar(t.recibe)}
- </p>
-
- <p>
- ⏰ ${escapar(t.hora)}
- </p>
-
- ${
-  t.observacion
-  ?`<p>📝 ${escapar(t.observacion)}</p>`
-  :""
- }
-
- <small class="muted">
- ${escapar(t.fecha)}
- </small>
-
- </div>
-
- `).join("")
-
- :
-
- `<div class="empty">
- No hay cambios de turno registrados.
- </div>`;
-
-
- /* RONDAS */
-
- document.getElementById("listaRondas")
- .innerHTML=
- db.rondas.length
-
- ?
-
- db.rondas.map(r=>`
-
- <div class="item">
-
- <div class="row">
-
- <strong>
- 🏢 ${escapar(r.conjunto)}
- </strong>
-
- <span class="badge badge-green">
- Realizada
- </span>
-
- </div>
-
- <p>
- 👮 ${escapar(r.guarda)}
- </p>
-
- <p>
- ⏰ ${escapar(r.hora)}
- </p>
-
- <p>
- ${escapar(r.observacion)}
- </p>
-
- <small class="muted">
- ${escapar(r.fecha)}
- </small>
-
- </div>
-
- `).join("")
-
- :
-
- `<div class="empty">
- No hay rondas registradas.
- </div>`;
-
-
- /* NOVEDADES */
-
- document.getElementById("listaNovedades")
- .innerHTML=
- renderPendientes(
-  db.novedades,
-  "Novedad"
- );
-
-
- /* REQUERIMIENTOS */
-
- document.getElementById("listaRequerimientos")
- .innerHTML=
- renderPendientes(
-  db.requerimientos,
-  "Requerimiento"
- );
-
-
- /* MINUTAS */
-
- document.getElementById("listaMinutas")
- .innerHTML=
- renderPendientes(
-  db.minutas,
-  "Solicitud de minuta"
- );
-
-
- /* DOTACION */
-
- document.getElementById("listaDotacion")
- .innerHTML=
- renderPendientes(
-  db.dotacion,
-  "Solicitud de dotación"
- );
-
-
- /* CONFIGURACION */
-
- document.getElementById("configNombre")
- .value=
- db.configuracion.nombre;
-
- document.getElementById("configSupervisor")
- .value=
- db.configuracion.supervisor;
-
- document.getElementById("configEmpresa")
- .value=
- db.configuracion.empresa;
+copyText(t);
 
 }
 
 
-function renderPendientes(lista,titulo){
+function resetData(){
 
- if(!lista.length){
+if(
+confirm(
+"¿Borrar todos los datos?"
+)
+){
 
-  return `
-  <div class="empty">
-  No hay registros.
-  </div>
-  `;
+localStorage.removeItem(KEY);
 
- }
+location.reload();
 
- return lista.map(x=>`
-
- <div class="item">
-
- <div class="row">
-
- <strong>
- ${escapar(x.conjunto||"Sin conjunto")}
- </strong>
-
- <span class="badge ${
-  x.estado==="Pendiente"
-  ?"badge-red"
-  :"badge-green"
- }">
-
- ${escapar(x.estado)}
-
- </span>
-
- </div>
-
- ${
-  x.guarda
-  ?`<p>👮 ${escapar(x.guarda)}</p>`
-  :""
- }
-
- ${
-  x.prioridad
-  ?`<p>🚨 Prioridad: ${escapar(x.prioridad)}</p>`
-  :""
- }
-
- ${
-  x.tipo
-  ?`<p>📂 ${escapar(x.tipo)}</p>`
-  :""
- }
-
- ${
-  x.cantidad
-  ?`<p>📒 Cantidad: ${escapar(x.cantidad)}</p>`
-  :""
- }
-
- ${
-  x.elemento
-  ?`<p>👕 ${escapar(x.elemento)}</p>`
-  :""
- }
-
- <p>
- ${escapar(
-  x.descripcion||
-  x.observacion||
-  ""
- )}
- </p>
-
- <small class="muted">
- ${escapar(x.fecha)}
- </small>
-
- ${
-  x.estado==="Pendiente"
-
-  ?
-
-  `<div class="actions">
-
-  <button
-  class="secondary"
-  onclick="resolverRegistro('${titulo}',${x.id})">
-
-  ✅ Marcar resuelto
-
-  </button>
-
-  </div>`
-
-  :""
-
- }
-
- </div>
-
- `).join("");
+}
 
 }
 
 
-function resolverRegistro(tipo,id){
+function render(){
 
- let lista=null;
+$("appTitle").textContent=
+db.config.nombre;
 
- if(tipo==="Novedad")
-  lista=db.novedades;
+$("date").textContent=
+new Date().toLocaleDateString(
+"es-CO",
+{
+weekday:"long",
+year:"numeric",
+month:"long",
+day:"numeric"
+}
+);
 
- if(tipo==="Requerimiento")
-  lista=db.requerimientos;
+let sa=
+db.conjuntos.filter(
+x=>x.activo
+).length;
 
- if(tipo==="Solicitud de minuta")
-  lista=db.minutas;
+let ga=
+db.guardas.filter(
+x=>x.activo
+).length;
 
- if(tipo==="Solicitud de dotación")
-  lista=db.dotacion;
+let pa=[
+...db.novedades,
+...db.requerimientos,
+...db.minutas,
+...db.dotacion
+].filter(
+x=>x.estado=="Pendiente"
+).length;
 
- if(!lista)
-  return;
+$("sets").textContent=sa;
 
- const registro=
- lista.find(x=>String(x.id)===String(id));
+$("guards").textContent=ga;
 
- if(registro){
+$("novs").textContent=
+db.novedades.length;
 
-  registro.estado="Resuelto";
+$("pend").textContent=pa;
 
-  guardarDB();
+$("homePending").innerHTML=
 
- }
+pa?
+
+`<p class="muted">
+${pa} registro(s) pendientes de atención.
+</p>`
+
+:
+
+`<div class="empty">
+No tienes pendientes. ✅
+</div>`;
+
+
+$("conjuntoList").innerHTML=
+
+db.conjuntos.length?
+
+db.conjuntos.map(x=>`
+
+<div class="item">
+
+<div class="row">
+
+<b>
+🏢 ${x.nombre}
+</b>
+
+<span class="badge ${x.activo?"":"pending"}">
+${x.activo?"Activo":"Inactivo"}
+</span>
+
+</div>
+
+<p>
+👤 Administrador:
+${x.admin||"No registrado"}
+</p>
+
+${x.tel?
+`<p>📱 ${x.tel}</p>`:""}
+
+${x.direccion?
+`<p>📍 ${x.direccion}</p>`:""}
+
+<button
+class="secondary"
+onclick="toggleSet(${x.id})"
+>
+${x.activo?"Desactivar":"Activar"}
+</button>
+
+</div>
+
+`).join("")
+
+:
+
+`<div class="empty">
+Todavía no hay conjuntos.
+</div>`;
+
+
+$("guardList").innerHTML=
+
+db.guardas.length?
+
+db.guardas.map(x=>`
+
+<div class="item">
+
+<div class="row">
+
+<b>
+👮 ${x.nombre}
+</b>
+
+<span class="badge ${x.activo?"":"pending"}">
+${x.activo?"Activo":"Inactivo"}
+</span>
+
+</div>
+
+<p>
+🏢 ${x.conjunto||"Sin asignar"}
+</p>
+
+<p>
+⏰ ${x.turno}
+</p>
+
+<button
+class="secondary"
+onclick="toggleGuard(${x.id})"
+>
+${x.activo?"Desactivar":"Activar"}
+</button>
+
+</div>
+
+`).join("")
+
+:
+
+`<div class="empty">
+Todavía no hay guardas.
+</div>`;
+
+
+setSelects();
+
+
+$("novedadList").innerHTML=
+renderList("novedades");
+
+$("reqList").innerHTML=
+renderList("requerimientos");
+
+$("minutaList").innerHTML=
+renderList("minutas");
+
+$("dotList").innerHTML=
+renderList("dotacion");
+
+
+$("turnoList").innerHTML=
+
+db.turnos.length?
+
+db.turnos.map(x=>`
+
+<div class="item">
+
+🏢 <b>${x.conjunto}</b>
+
+<p>
+Entrega: ${x.entrega}
+→
+Recibe: ${x.recibe}
+|
+${x.hora}
+</p>
+
+<p>
+${x.obs}
+</p>
+
+</div>
+
+`).join("")
+
+:
+
+`<div class="empty">
+No hay cambios.
+</div>`;
+
+
+$("rondaList").innerHTML=
+
+db.rondas.length?
+
+db.rondas.map(x=>`
+
+<div class="item">
+
+🏢 <b>${x.conjunto}</b>
+
+<p>
+👮 ${x.guarda}
+|
+${x.hora}
+</p>
+
+<p>
+${x.obs}
+</p>
+
+</div>
+
+`).join("")
+
+:
+
+`<div class="empty">
+No hay rondas.
+</div>`;
+
+
+$("planillaList").innerHTML=
+
+db.planillas.length?
+
+db.planillas.map(x=>`
+
+<div class="item">
+
+🚗 ${x.archivo}
+
+<br>
+
+<small>
+${x.fecha}
+</small>
+
+</div>
+
+`).join("")
+
+:"";
+
+
+$("appn").value=
+db.config.nombre;
+
+$("sup").value=
+db.config.supervisor;
+
+$("emp").value=
+db.config.empresa;
+
+previewPuesto();
 
 }
 
 
-/* =====================================================
-   INICIO
-===================================================== */
-
-renderizar();
+render();
 
 </script>
 
