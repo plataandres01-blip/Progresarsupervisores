@@ -4,886 +4,653 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#111827">
-<title>Supervisor Plata</title>
+<title>PROGRESAR SECURITY LTDA.</title>
 
 <style>
 *{box-sizing:border-box}
-
 body{
- margin:0;
- background:#f3f4f6;
- color:#111827;
- font-family:Arial,sans-serif;
+ margin:0;background:#f3f4f6;color:#111827;
+ font-family:Arial,sans-serif;padding-bottom:70px
 }
-
-.app{
- max-width:1000px;
- margin:auto;
- padding-bottom:80px;
-}
-
 header{
- background:#111827;
- color:white;
- padding:16px;
- position:sticky;
- top:0;
- z-index:5;
+ background:#111827;color:white;padding:15px;
+ position:sticky;top:0;z-index:20
 }
-
-.head{
- display:flex;
- justify-content:space-between;
- align-items:center;
+.header{
+ display:flex;justify-content:space-between;align-items:center
 }
+h1{font-size:19px;margin:0}
+h2{font-size:21px}
+h3{margin-top:5px}
+main{max-width:1000px;margin:auto;padding:12px}
+.screen{display:none}
+.screen.active{display:block}
 
-h1{
- font-size:21px;
- margin:0;
+.card,.item{
+ background:white;border:1px solid #ddd;border-radius:14px;
+ padding:13px;margin:10px 0
 }
-
-header small{
- color:#cbd5e1;
+.stats{
+ display:grid;grid-template-columns:repeat(2,1fr);gap:9px
 }
-
-main{
- padding:14px;
-}
-
-.screen{
- display:none;
-}
-
-.screen.active{
- display:block;
-}
-
-h2{
- font-size:21px;
-}
-
-.card{
- background:white;
- border:1px solid #e5e7eb;
- border-radius:15px;
- padding:14px;
- margin:10px 0;
- box-shadow:0 2px 8px #00000008;
-}
-
-.stats,
-.quick{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:9px;
-}
-
 .stat{
- background:white;
- border:1px solid #e5e7eb;
- border-radius:14px;
- padding:13px;
+ background:white;border-radius:13px;padding:13px;
+ border:1px solid #ddd
 }
+.num{font-size:26px;font-weight:bold}
+.small{font-size:12px;color:#6b7280}
 
-.num{
- font-size:26px;
- font-weight:bold;
+.quick{
+ display:grid;grid-template-columns:repeat(2,1fr);gap:8px
 }
-
-.muted{
- color:#6b7280;
- font-size:13px;
-}
-
 .quick button{
- border:1px solid #e5e7eb;
- background:white;
- border-radius:14px;
- padding:14px;
- text-align:left;
- font-weight:bold;
+ background:white;border:1px solid #ddd;border-radius:13px;
+ padding:14px;text-align:left;font-weight:bold
 }
-
-.ico{
- font-size:24px;
- display:block;
- margin-bottom:5px;
-}
+.icon{font-size:22px;display:block;margin-bottom:5px}
 
 label{
- display:block;
- font-size:12px;
- font-weight:bold;
- margin:9px 0 4px;
+ display:block;font-size:12px;font-weight:bold;margin-top:9px
 }
-
-input,
-select,
-textarea{
- width:100%;
- padding:11px;
- border:1px solid #d1d5db;
- border-radius:10px;
- background:white;
- font-size:14px;
+input,select,textarea{
+ width:100%;padding:11px;border:1px solid #cbd5e1;
+ border-radius:9px;background:white;font-size:14px
 }
-
-textarea{
- min-height:90px;
-}
+textarea{min-height:80px;resize:vertical}
 
 button{
- font-family:inherit;
- cursor:pointer;
+ border:0;border-radius:9px;padding:10px 13px;
+ font-weight:bold;font-family:Arial
 }
-
-.primary,
-.secondary,
-.danger{
- border:0;
- border-radius:10px;
- padding:11px 14px;
- font-weight:bold;
-}
-
-.primary{
- background:#2563eb;
- color:white;
-}
-
-.secondary{
- background:#e5e7eb;
- color:#111827;
-}
-
-.danger{
- background:#dc2626;
- color:white;
-}
+.primary{background:#2563eb;color:white}
+.secondary{background:#e5e7eb;color:#111827}
+.warning{background:#f59e0b;color:white}
+.danger{background:#dc2626;color:white}
+.success{background:#16a34a;color:white}
 
 .actions{
- display:flex;
- flex-wrap:wrap;
- gap:8px;
- margin-top:10px;
+ display:flex;gap:7px;flex-wrap:wrap;margin-top:10px
 }
-
-.item{
- border:1px solid #e5e7eb;
- border-radius:11px;
- padding:11px;
- margin:8px 0;
- background:white;
-}
-
 .row{
- display:flex;
- justify-content:space-between;
- gap:8px;
- align-items:center;
+ display:flex;justify-content:space-between;
+ align-items:center;gap:8px
 }
-
 .badge{
- border-radius:20px;
- padding:4px 8px;
- font-size:11px;
- background:#dcfce7;
- color:#166534;
+ display:inline-block;padding:4px 8px;border-radius:20px;
+ background:#dcfce7;color:#166534;font-size:11px
 }
-
-.pending{
- background:#fee2e2;
- color:#991b1b;
-}
-
-.empty{
- text-align:center;
- color:#6b7280;
- padding:20px;
-}
+.badge.red{background:#fee2e2;color:#991b1b}
+.badge.yellow{background:#fef3c7;color:#92400e}
 
 .result{
- white-space:pre-wrap;
- background:#f8fafc;
- border:1px solid #e5e7eb;
- border-radius:11px;
- padding:12px;
- margin-top:10px;
- font-size:13px;
+ white-space:pre-wrap;background:#f8fafc;
+ border:1px solid #d1d5db;border-radius:10px;
+ padding:12px;font-size:13px;line-height:1.45;
+ margin-top:10px
 }
+.empty{text-align:center;color:#6b7280;padding:18px}
 
 .bottom{
- position:fixed;
- bottom:0;
- left:0;
- right:0;
- background:white;
- border-top:1px solid #ddd;
- z-index:8;
+ position:fixed;bottom:0;left:0;right:0;background:white;
+ border-top:1px solid #ddd;z-index:30
 }
-
 .nav{
- max-width:1000px;
- margin:auto;
- display:grid;
- grid-template-columns:repeat(4,1fr);
+ max-width:1000px;margin:auto;
+ display:grid;grid-template-columns:repeat(4,1fr)
 }
-
 .nav button{
- border:0;
- background:white;
- color:#6b7280;
- padding:8px;
- font-size:11px;
+ background:white;color:#6b7280;border-radius:0;
+ padding:7px;font-size:11px
 }
+.nav button b{display:block;font-size:18px}
+.nav button.active{color:#2563eb}
 
-.nav b{
- display:block;
- font-size:19px;
-}
-
-.nav .active{
- color:#2563eb;
+.supervisor{
+ background:#1e3a8a;color:white;padding:10px;
+ border-radius:10px;margin-top:10px
 }
 
 @media(min-width:700px){
-
-.stats{
- grid-template-columns:repeat(4,1fr);
-}
-
-.quick{
- grid-template-columns:repeat(4,1fr);
-}
-
+ .stats{grid-template-columns:repeat(4,1fr)}
+ .quick{grid-template-columns:repeat(4,1fr)}
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
-
 <header>
-
-<div class="head">
-
+<div class="header">
 <div>
-
-<h1 id="appTitle">SUPERVISOR PLATA</h1>
-
-<small id="date"></small>
-
+<h1 id="titulo">PROGRESAR SECURITY LTDA.</h1>
+<div id="subtitulo" class="small" style="color:#d1d5db">
+Supervisor
 </div>
-
-<button class="secondary" onclick="show('config')">⚙️</button>
-
 </div>
-
+<button class="secondary" onclick="mostrar('configuracion')">⚙️</button>
+</div>
 </header>
 
 <main>
 
 <!-- INICIO -->
+<section id="inicio" class="screen active">
 
-<section id="home" class="screen active">
+<div class="supervisor">
+<b>👤 Supervisor actual:</b>
+<span id="supervisorActual"></span>
+</div>
 
 <h2>Panel de supervisión</h2>
 
 <div class="stats">
-
 <div class="stat">
-<div class="num" id="sets">0</div>
-<div class="muted">Conjuntos activos</div>
+<div class="num" id="totalConjuntos">0</div>
+<div class="small">Puestos</div>
 </div>
 
 <div class="stat">
-<div class="num" id="guards">0</div>
-<div class="muted">Guardas activos</div>
+<div class="num" id="totalGuardas">0</div>
+<div class="small">Guardas activos</div>
 </div>
 
 <div class="stat">
-<div class="num" id="novs">0</div>
-<div class="muted">Novedades</div>
+<div class="num" id="totalNovedades">0</div>
+<div class="small">Novedades</div>
 </div>
 
 <div class="stat">
-<div class="num" id="pend">0</div>
-<div class="muted">Pendientes</div>
+<div class="num" id="totalPendientes">0</div>
+<div class="small">Pendientes</div>
 </div>
-
 </div>
 
 <div class="quick">
 
-<button onclick="show('whatsapp')">
-<span class="ico">📋</span>
-Pegar WhatsApp
+<button onclick="mostrar('conjuntos')">
+<span class="icon">🏢</span>Puestos
 </button>
 
-<button onclick="show('planillas')">
-<span class="ico">🚗</span>
-Planillajes
+<button onclick="mostrar('personal')">
+<span class="icon">👮</span>Guardas
 </button>
 
-<button onclick="show('turnos')">
-<span class="ico">🔄</span>
-Cambio de turno
+<button onclick="mostrar('novedades')">
+<span class="icon">📝</span>Novedades
 </button>
 
-<button onclick="show('rondas')">
-<span class="ico">🔵</span>
-Rondas
+<button onclick="mostrar('rondas')">
+<span class="icon">🔵</span>Rondas
 </button>
 
-<button onclick="show('novedades')">
-<span class="ico">📝</span>
-Novedades
+<button onclick="mostrar('turnos')">
+<span class="icon">🔄</span>Cambio de turno
 </button>
 
-<button onclick="show('req')">
-<span class="ico">🛠️</span>
-Requerimientos
+<button onclick="mostrar('planillajes')">
+<span class="icon">🚗</span>Planillajes
 </button>
 
-<button onclick="show('minutas')">
-<span class="ico">📒</span>
-Minutas
+<button onclick="mostrar('minutas')">
+<span class="icon">📒</span>Minutas
 </button>
 
-<button onclick="show('dotacion')">
-<span class="ico">👕</span>
-Dotación
+<button onclick="mostrar('dotacion')">
+<span class="icon">👕</span>Dotación
 </button>
 
-<button onclick="show('conjuntos')">
-<span class="ico">🏢</span>
-Conjuntos
+<button onclick="mostrar('requerimientos')">
+<span class="icon">🛠️</span>Requerimientos
 </button>
 
-<button onclick="show('personal')">
-<span class="ico">👮</span>
-Personal
+<button onclick="mostrar('whatsapp')">
+<span class="icon">📋</span>Pegar WhatsApp
 </button>
 
-<button onclick="show('informes')">
-<span class="ico">📊</span>
-Informes
+<button onclick="mostrar('informes')">
+<span class="icon">📊</span>Informes
 </button>
 
 </div>
 
 <div class="card">
-
 <b>🚨 Pendientes</b>
-
-<div id="homePending"></div>
-
+<div id="resumenPendientes"></div>
 </div>
 
 </section>
 
 
 <!-- CONJUNTOS -->
-
 <section id="conjuntos" class="screen">
 
-<button class="secondary" onclick="show('home')">
-← Inicio
-</button>
-
-<h2>🏢 Conjuntos</h2>
+<button class="secondary" onclick="mostrar('inicio')">← Inicio</button>
+<h2>🏢 Puestos / Conjuntos</h2>
 
 <div class="card">
 
-<label>Nombre del conjunto</label>
+<input type="hidden" id="idConjunto">
 
-<input id="cn" placeholder="Ej. Arrayanes">
+<label>Nombre del conjunto</label>
+<input id="nombreConjunto">
 
 <label>Dirección</label>
-
-<input id="cd" placeholder="Dirección">
+<input id="direccionConjunto">
 
 <label>Administrador</label>
+<input id="administradorConjunto">
 
-<input id="ca" placeholder="Nombre del administrador">
-
-<label>WhatsApp / teléfono</label>
-
-<input id="ct" placeholder="Solo como referencia">
+<label>Teléfono administrador</label>
+<input id="telefonoAdministrador">
 
 <label>Observaciones</label>
+<textarea id="observacionesConjunto"></textarea>
 
-<textarea id="co"></textarea>
-
-<button class="primary" onclick="addConjunto()">
-➕ Agregar conjunto
-</button>
+<div class="actions">
+<button class="primary" onclick="guardarConjunto()">💾 Guardar</button>
+<button class="secondary" onclick="limpiarConjunto()">Cancelar</button>
+</div>
 
 </div>
 
 <div class="card">
-
-<b>Conjuntos registrados</b>
-
-<div id="conjuntoList"></div>
-
+<b>Puestos registrados</b>
+<div id="listaConjuntos"></div>
 </div>
 
 </section>
 
 
 <!-- PERSONAL -->
-
 <section id="personal" class="screen">
 
-<button class="secondary" onclick="show('home')">
-← Inicio
-</button>
-
+<button class="secondary" onclick="mostrar('inicio')">← Inicio</button>
 <h2>👮 Personal</h2>
 
 <div class="card">
 
-<label>Nombre</label>
+<input type="hidden" id="idGuarda">
 
-<input id="gn">
+<label>Nombre completo</label>
+<input id="nombreGuarda">
 
 <label>Teléfono</label>
+<input id="telefonoGuarda">
 
-<input id="gt">
-
-<label>Conjunto</label>
-
-<select id="gc"></select>
+<label>Puesto / conjunto</label>
+<select id="puestoGuarda"></select>
 
 <label>Turno</label>
-
-<select id="gh">
-
+<select id="turnoGuarda">
 <option>06:00 - 18:00</option>
 <option>18:00 - 06:00</option>
 <option>Otro</option>
-
 </select>
 
-<button class="primary" onclick="addGuarda()">
-➕ Agregar guarda
-</button>
-
-</div>
-
-<div class="card">
-
-<b>Personal registrado</b>
-
-<div id="guardList"></div>
-
-</div>
-
-</section>
-
-
-<!-- WHATSAPP -->
-
-<section id="whatsapp" class="screen">
-
-<button class="secondary" onclick="show('home')">
-← Inicio
-</button>
-
-<h2>📋 Pegar WhatsApp</h2>
-
-<div class="card">
-
-<p class="muted">
-Copia el mensaje de WhatsApp del guarda y pégalo aquí.
-</p>
-
-<textarea
-id="wt"
-placeholder="Pega aquí el reporte..."
-></textarea>
-
 <div class="actions">
-
-<button class="primary" onclick="analizar()">
-🤖 Analizar
-</button>
-
-<button class="secondary" onclick="val('wt','')">
-Limpiar
-</button>
-
+<button class="primary" onclick="guardarGuarda()">💾 Guardar guarda</button>
+<button class="secondary" onclick="limpiarGuarda()">Cancelar</button>
 </div>
 
-<div id="waResult"></div>
-
 </div>
-
-</section>
-
-
-<!-- PLANILLAJES -->
-
-<section id="planillas" class="screen">
-
-<button class="secondary" onclick="show('home')">
-← Inicio
-</button>
-
-<h2>🚗 Planillajes vehiculares</h2>
 
 <div class="card">
-
-<p class="muted">
-Aquí registraremos los planillajes que llegan de los conjuntos.
-</p>
-
-<input
-type="file"
-accept=".xlsx,.xls,.csv"
-onchange="addPlanilla(this)"
->
-
-<div id="planillaList"></div>
-
+<b>Personal por puesto</b>
+<div id="listaPersonal"></div>
 </div>
-
-</section>
-
-
-<!-- CAMBIO TURNO -->
-
-<section id="turnos" class="screen">
-
-<button class="secondary" onclick="show('home')">
-← Inicio
-</button>
-
-<h2>🔄 Cambios de turno</h2>
-
-<div class="card">
-
-<label>Conjunto</label>
-
-<select id="tc"></select>
-
-<label>Guarda que entrega</label>
-
-<select id="te"></select>
-
-<label>Guarda que recibe</label>
-
-<select id="tr"></select>
-
-<label>Hora</label>
-
-<input id="th" type="time">
-
-<label>Pendientes / observaciones</label>
-
-<textarea id="to"></textarea>
-
-<button class="primary" onclick="addTurno()">
-Guardar cambio
-</button>
-
-</div>
-
-<div id="turnoList"></div>
-
-</section>
-
-
-<!-- RONDAS -->
-
-<section id="rondas" class="screen">
-
-<button class="secondary" onclick="show('home')">
-← Inicio
-</button>
-
-<h2>🔵 Rondas</h2>
-
-<div class="card">
-
-<label>Conjunto</label>
-
-<select id="rc"></select>
-
-<label>Guarda</label>
-
-<select id="rg"></select>
-
-<label>Hora</label>
-
-<input id="rh" type="time">
-
-<label>Resultado</label>
-
-<textarea id="ro"></textarea>
-
-<button class="primary" onclick="addRonda()">
-Registrar ronda
-</button>
-
-</div>
-
-<div id="rondaList"></div>
 
 </section>
 
 
 <!-- NOVEDADES -->
-
 <section id="novedades" class="screen">
 
-<button class="secondary" onclick="show('home')">
-← Inicio
-</button>
-
+<button class="secondary" onclick="mostrar('inicio')">← Inicio</button>
 <h2>📝 Novedades</h2>
 
 <div class="card">
 
-<label>Conjunto</label>
+<input type="hidden" id="idNovedad">
 
-<select id="nc"></select>
+<label>Puesto</label>
+<select id="puestoNovedad"></select>
 
 <label>Guarda</label>
-
-<select id="ng"></select>
+<select id="guardaNovedad"></select>
 
 <label>Prioridad</label>
-
-<select id="np">
-
+<select id="prioridadNovedad">
 <option>Alta</option>
 <option selected>Media</option>
 <option>Baja</option>
-
 </select>
 
-<label>Descripción</label>
+<label>Novedad</label>
+<textarea id="textoNovedad"></textarea>
 
-<textarea id="nd"></textarea>
-
-<button class="primary" onclick="addNovedad()">
-Guardar novedad
-</button>
+<div class="actions">
+<button class="primary" onclick="guardarNovedad()">💾 Guardar</button>
+<button class="secondary" onclick="limpiarNovedad()">Cancelar</button>
+</div>
 
 </div>
 
-<div id="novedadList"></div>
+<div id="listaNovedades"></div>
 
 </section>
 
 
-<!-- REQUERIMIENTOS -->
+<!-- RONDAS -->
+<section id="rondas" class="screen">
 
-<section id="req" class="screen">
-
-<button class="secondary" onclick="show('home')">
-← Inicio
-</button>
-
-<h2>🛠️ Requerimientos</h2>
+<button class="secondary" onclick="mostrar('inicio')">← Inicio</button>
+<h2>🔵 Rondas</h2>
 
 <div class="card">
 
-<label>Conjunto</label>
+<input type="hidden" id="idRonda">
 
-<select id="qc"></select>
+<label>Puesto</label>
+<select id="puestoRonda"></select>
 
-<label>Solicitado por</label>
+<label>Guarda</label>
+<select id="guardaRonda"></select>
 
-<select id="qg"></select>
+<label>Hora</label>
+<input id="horaRonda" type="time">
 
-<label>Tipo</label>
+<label>Resultado / observación</label>
+<textarea id="textoRonda"></textarea>
 
-<select id="qt">
-
-<option>Mantenimiento</option>
-<option>Seguridad</option>
-<option>Personal</option>
-<option>Dotación</option>
-<option>Minutas</option>
-<option>Vehicular</option>
-<option>Otro</option>
-
-</select>
-
-<label>Prioridad</label>
-
-<select id="qp">
-
-<option>Alta</option>
-<option selected>Media</option>
-<option>Baja</option>
-
-</select>
-
-<label>Descripción</label>
-
-<textarea id="qd"></textarea>
-
-<button class="primary" onclick="addReq()">
-Guardar requerimiento
-</button>
+<div class="actions">
+<button class="primary" onclick="guardarRonda()">💾 Guardar</button>
+<button class="secondary" onclick="limpiarRonda()">Cancelar</button>
+</div>
 
 </div>
 
-<div id="reqList"></div>
+<div id="listaRondas"></div>
+
+</section>
+
+
+<!-- TURNOS -->
+<section id="turnos" class="screen">
+
+<button class="secondary" onclick="mostrar('inicio')">← Inicio</button>
+<h2>🔄 Cambios de turno</h2>
+
+<div class="card">
+
+<input type="hidden" id="idTurno">
+
+<label>Puesto</label>
+<select id="puestoTurno"></select>
+
+<label>Guarda que entrega</label>
+<select id="entregaTurno"></select>
+
+<label>Guarda que recibe</label>
+<select id="recibeTurno"></select>
+
+<label>Hora</label>
+<input id="horaTurno" type="time">
+
+<label>Observación</label>
+<textarea id="observacionTurno"></textarea>
+
+<div class="actions">
+<button class="primary" onclick="guardarTurno()">💾 Guardar</button>
+<button class="secondary" onclick="limpiarTurno()">Cancelar</button>
+</div>
+
+</div>
+
+<div id="listaTurnos"></div>
+
+</section>
+
+
+<!-- PLANILLAJES -->
+<section id="planillajes" class="screen">
+
+<button class="secondary" onclick="mostrar('inicio')">← Inicio</button>
+<h2>🚗 Planillajes vehiculares</h2>
+
+<div class="card">
+
+<label>Puesto</label>
+<select id="puestoPlanilla"></select>
+
+<label>Archivo recibido</label>
+<input type="file" accept=".xlsx,.xls,.csv"
+onchange="registrarPlanilla(this)">
+
+<p class="small">
+El archivo queda registrado para saber de qué puesto fue recibido.
+</p>
+
+</div>
+
+<div id="listaPlanillas"></div>
 
 </section>
 
 
 <!-- MINUTAS -->
-
 <section id="minutas" class="screen">
 
-<button class="secondary" onclick="show('home')">
-← Inicio
-</button>
-
+<button class="secondary" onclick="mostrar('inicio')">← Inicio</button>
 <h2>📒 Minutas</h2>
 
 <div class="card">
 
-<label>Conjunto</label>
+<input type="hidden" id="idMinuta">
 
-<select id="mc"></select>
+<label>Puesto</label>
+<select id="puestoMinuta"></select>
 
-<label>Guarda</label>
-
-<select id="mg"></select>
+<label>Guarda que solicita</label>
+<select id="guardaMinuta"></select>
 
 <label>Cantidad</label>
-
-<input id="mqty" type="number" min="1" value="1">
+<input id="cantidadMinuta" type="number" value="1">
 
 <label>Observación</label>
+<textarea id="observacionMinuta"></textarea>
 
-<textarea id="mo"></textarea>
-
-<button class="primary" onclick="addMinuta()">
-Guardar solicitud
-</button>
+<div class="actions">
+<button class="primary" onclick="guardarMinuta()">💾 Guardar</button>
+<button class="secondary" onclick="limpiarMinuta()">Cancelar</button>
+</div>
 
 </div>
 
-<div id="minutaList"></div>
+<div id="listaMinutas"></div>
 
 </section>
 
 
 <!-- DOTACION -->
-
 <section id="dotacion" class="screen">
 
-<button class="secondary" onclick="show('home')">
-← Inicio
-</button>
-
+<button class="secondary" onclick="mostrar('inicio')">← Inicio</button>
 <h2>👕 Dotación</h2>
 
 <div class="card">
 
-<label>Conjunto</label>
+<input type="hidden" id="idDotacion">
 
-<select id="dc"></select>
+<label>Puesto</label>
+<select id="puestoDotacion"></select>
 
-<label>Guarda</label>
-
-<select id="dg"></select>
+<label>Guarda que necesita la dotación</label>
+<select id="guardaDotacion"></select>
 
 <label>Elemento</label>
+<input id="elementoDotacion"
+placeholder="Ej: Chaqueta, botas, pantalón">
 
-<input id="de" placeholder="Camisa, pantalón...">
+<label>Talla</label>
+<input id="tallaDotacion">
 
-<label>Talla / cantidad</label>
-
-<input id="dt">
+<label>Cantidad</label>
+<input id="cantidadDotacion" type="number" value="1">
 
 <label>Observación</label>
+<textarea id="observacionDotacion"></textarea>
 
-<textarea id="do"></textarea>
-
-<button class="primary" onclick="addDot()">
-Guardar solicitud
-</button>
+<div class="actions">
+<button class="primary" onclick="guardarDotacion()">💾 Guardar</button>
+<button class="secondary" onclick="limpiarDotacion()">Cancelar</button>
+</div>
 
 </div>
 
-<div id="dotList"></div>
+<div id="listaDotacion"></div>
+
+</section>
+
+
+<!-- REQUERIMIENTOS -->
+<section id="requerimientos" class="screen">
+
+<button class="secondary" onclick="mostrar('inicio')">← Inicio</button>
+<h2>🛠️ Requerimientos para supervisores</h2>
+
+<div class="card">
+
+<input type="hidden" id="idRequerimiento">
+
+<label>Puesto</label>
+<select id="puestoRequerimiento"></select>
+
+<label>Solicitado por</label>
+<select id="guardaRequerimiento"></select>
+
+<label>Tipo</label>
+<select id="tipoRequerimiento">
+<option>Seguridad</option>
+<option>Personal</option>
+<option>Mantenimiento</option>
+<option>Dotación</option>
+<option>Minutas</option>
+<option>Vehicular</option>
+<option>Administrativo</option>
+<option>Otro</option>
+</select>
+
+<label>Prioridad</label>
+<select id="prioridadRequerimiento">
+<option>Alta</option>
+<option selected>Media</option>
+<option>Baja</option>
+</select>
+
+<label>Descripción</label>
+<textarea id="textoRequerimiento"></textarea>
+
+<div class="actions">
+<button class="primary" onclick="guardarRequerimiento()">💾 Guardar</button>
+<button class="secondary" onclick="limpiarRequerimiento()">Cancelar</button>
+</div>
+
+</div>
+
+<div id="listaRequerimientos"></div>
+
+</section>
+
+
+<!-- WHATSAPP -->
+<section id="whatsapp" class="screen">
+
+<button class="secondary" onclick="mostrar('inicio')">← Inicio</button>
+<h2>📋 Pegar mensajes de WhatsApp</h2>
+
+<div class="card">
+
+<p class="small">
+Copia el mensaje que te envía el guarda y pégalo aquí.
+</p>
+
+<textarea id="mensajeWhatsApp"
+placeholder="Pega aquí el mensaje completo..."></textarea>
+
+<div class="actions">
+<button class="primary" onclick="analizarWhatsApp()">
+🔎 Identificar
+</button>
+
+<button class="secondary"
+onclick="document.getElementById('mensajeWhatsApp').value=''">
+Limpiar
+</button>
+</div>
+
+<div id="resultadoWhatsApp"></div>
+
+</div>
 
 </section>
 
 
 <!-- INFORMES -->
-
 <section id="informes" class="screen">
 
-<button class="secondary" onclick="show('home')">
-← Inicio
-</button>
-
+<button class="secondary" onclick="mostrar('inicio')">← Inicio</button>
 <h2>📊 Informes</h2>
 
-
+<!-- INFORME ADMINISTRADOR -->
 <div class="card">
 
 <h3>📩 Informe para administrador</h3>
 
-<p class="muted">
-Selecciona el conjunto. La aplicación generará únicamente la información de ese puesto.
-</p>
-
-<label>Puesto / conjunto</label>
-
-<select id="reportSet" onchange="previewPuesto()"></select>
+<label>Seleccionar puesto</label>
+<select id="puestoInforme"
+onchange="mostrarInformePuesto()"></select>
 
 <div class="actions">
 
-<button class="primary" onclick="copiarPuesto()">
-📋 COPIAR INFORME DEL PUESTO
+<button class="primary" onclick="copiarInformePuesto()">
+📋 Copiar informe
+</button>
+
+<button class="danger" onclick="cerrarPuesto()">
+🗑️ Cerrar y limpiar puesto
 </button>
 
 </div>
 
-<div
-id="puestoPreview"
-class="result"
->
-Selecciona un conjunto.
+<div id="informePuesto" class="result">
+Selecciona un puesto.
 </div>
 
 </div>
 
 
+<!-- INFORME JEFES -->
 <div class="card">
 
-<h3>📊 Informe general para mi jefe</h3>
+<h3>📊 Informe general para jefes</h3>
 
-<p class="muted">
-Un solo informe con todos los puestos de PROGRESAR SECURITY.
+<p class="small">
+Este informe sí incluye dotaciones, minutas y requerimientos.
 </p>
 
 <div class="actions">
 
-<button class="primary" onclick="copiarGeneral()">
-📋 COPIAR INFORME GENERAL
+<button class="primary" onclick="copiarInformeGeneral()">
+📋 Copiar informe general
+</button>
+
+<button class="danger" onclick="cerrarTodosLosPuestos()">
+🗑️ Cerrar y limpiar todos
 </button>
 
 </div>
 
-<div
-id="generalPreview"
-class="result"
->
-Pulsa el botón para generar el informe general.
-</div>
+<div id="informeGeneral" class="result"></div>
 
 </div>
 
@@ -891,39 +658,42 @@ Pulsa el botón para generar el informe general.
 
 
 <!-- CONFIGURACION -->
+<section id="configuracion" class="screen">
 
-<section id="config" class="screen">
-
-<button class="secondary" onclick="show('home')">
-← Inicio
-</button>
-
+<button class="secondary" onclick="mostrar('inicio')">← Inicio</button>
 <h2>⚙️ Configuración</h2>
 
 <div class="card">
 
-<label>Nombre de la aplicación</label>
-
-<input id="appn">
-
-<label>Supervisor</label>
-
-<input id="sup">
-
 <label>Empresa</label>
+<input id="empresaConfig">
 
-<input id="emp">
+<label>Supervisor 1</label>
+<input id="supervisor1Config">
 
-<button class="primary" onclick="saveConfig()">
-Guardar configuración
+<label>Supervisor 2</label>
+<input id="supervisor2Config">
+
+<label>Supervisor actual</label>
+<select id="supervisorActualConfig">
+<option>Supervisor Plata</option>
+<option>Supervisor García</option>
+</select>
+
+<div class="actions">
+<button class="primary" onclick="guardarConfiguracion()">
+💾 Guardar configuración
 </button>
+</div>
 
 </div>
 
 <div class="card">
 
-<button class="danger" onclick="resetData()">
-⚠️ Borrar todos los datos
+<h3>👤 Cambiar supervisor de trabajo</h3>
+
+<button class="primary" onclick="cambiarSupervisor()">
+Cambiar supervisor actual
 </button>
 
 </div>
@@ -933,1374 +703,2079 @@ Guardar configuración
 </main>
 
 
+<!-- MENU INFERIOR -->
 <nav class="bottom">
-
 <div class="nav">
 
-<button
-id="n1"
-class="active"
-onclick="show('home')"
->
-<b>🏠</b>
-Inicio
+<button id="navInicio" class="active"
+onclick="mostrar('inicio')">
+<b>🏠</b>Inicio
 </button>
 
-<button
-id="n2"
-onclick="show('novedades')"
->
-<b>📝</b>
-Operación
+<button id="navOperacion"
+onclick="mostrar('novedades')">
+<b>📝</b>Operación
 </button>
 
-<button
-id="n3"
-onclick="show('req')"
->
-<b>🛠️</b>
-Solicitudes
+<button id="navSolicitudes"
+onclick="mostrar('requerimientos')">
+<b>🛠️</b>Solicitudes
 </button>
 
-<button
-id="n4"
-onclick="show('informes')"
->
-<b>📊</b>
-Informes
+<button id="navInformes"
+onclick="mostrar('informes')">
+<b>📊</b>Informes
 </button>
 
 </div>
-
 </nav>
-
-</div>
 
 
 <script>
 
-const KEY="supervisorPlataV3";
+/* ==========================================================
+   PROGRESAR SECURITY LTDA.
+   SUPERVISOR PLATA / SUPERVISOR GARCÍA
+   TODO EN UN SOLO INDEX.HTML
+========================================================== */
 
-const base={
-conjuntos:[],
-guardas:[],
-turnos:[],
-rondas:[],
-novedades:[],
-requerimientos:[],
-minutas:[],
-dotacion:[],
-planillas:[],
-config:{
-nombre:"SUPERVISOR PLATA",
-supervisor:"Supervisor Plata",
-empresa:"PROGRESAR SECURITY"
-}
+const CLAVE="progresarSecuritySupervisorV1";
+
+const DATOS_INICIALES={
+ empresa:"PROGRESAR SECURITY LTDA.",
+ supervisores:[
+  "Supervisor Plata",
+  "Supervisor García"
+ ],
+ supervisorActual:"Supervisor Plata",
+
+ conjuntos:[],
+ guardas:[],
+ novedades:[],
+ rondas:[],
+ turnos:[],
+ planillas:[],
+ minutas:[],
+ dotaciones:[],
+ requerimientos:[]
 };
 
-let db=JSON.parse(
-localStorage.getItem(KEY)||"null"
-)||base;
+let db=JSON.parse(localStorage.getItem(CLAVE)||"null");
+
+if(!db){
+ db=DATOS_INICIALES;
+ guardarDB();
+}
+
+
+/* ================= UTILIDADES ================= */
 
 function $(id){
-return document.getElementById(id);
+ return document.getElementById(id);
 }
 
-function val(id,x){
-
-if(x===undefined){
-
-return ($(id)?.value||"").trim();
-
+function valor(id){
+ return ($(id).value||"").trim();
 }
 
-$(id).value=x;
-
+function poner(id,valor){
+ if($(id)) $(id).value=valor||"";
 }
 
-function save(){
-
-localStorage.setItem(
-KEY,
-JSON.stringify(db)
-);
-
-render();
-
+function fecha(){
+ return new Date().toLocaleString("es-CO");
 }
 
-function now(){
-
-return new Date().toLocaleString(
-"es-CO",
-{
-dateStyle:"short",
-timeStyle:"short"
+function hoy(){
+ return new Date().toLocaleDateString("es-CO");
 }
-);
 
+function guardarDB(){
+ localStorage.setItem(CLAVE,JSON.stringify(db));
+}
+
+function escapar(texto){
+ return String(texto??"")
+ .replace(/&/g,"&amp;")
+ .replace(/</g,"&lt;")
+ .replace(/>/g,"&gt;")
+ .replace(/"/g,"&quot;");
+}
+
+function nuevoId(){
+ return Date.now()+Math.floor(Math.random()*1000);
 }
 
 
-function show(id){
+/* ================= NAVEGACIÓN ================= */
 
-document
-.querySelectorAll(".screen")
-.forEach(x=>x.classList.remove("active"));
+function mostrar(id){
 
-$(id).classList.add("active");
+ document.querySelectorAll(".screen")
+ .forEach(s=>s.classList.remove("active"));
 
-document
-.querySelectorAll(".nav button")
-.forEach(x=>x.classList.remove("active"));
+ $(id).classList.add("active");
 
-if(id=="home")
-$("n1").classList.add("active");
+ document.querySelectorAll(".nav button")
+ .forEach(b=>b.classList.remove("active"));
 
-else if(id=="informes")
-$("n4").classList.add("active");
+ if(id==="inicio")
+  $("navInicio").classList.add("active");
 
-else if(
-["req","minutas","dotacion"].includes(id)
-)
-$("n3").classList.add("active");
+ else if(id==="informes")
+  $("navInformes").classList.add("active");
 
-else
-$("n2").classList.add("active");
+ else if(["requerimientos","minutas","dotacion"]
+ .includes(id))
+  $("navSolicitudes").classList.add("active");
 
-render();
+ else
+  $("navOperacion").classList.add("active");
 
-window.scrollTo(0,0);
+ render();
 
+ window.scrollTo(0,0);
 }
 
 
-function optsSets(){
+/* ================= SELECTS ================= */
 
-return `<option value="">
-Seleccionar conjunto
-</option>`+
+function actualizarSelects(){
 
-db.conjuntos
-.filter(x=>x.activo)
-.map(x=>
-`<option>${x.nombre}</option>`
-)
-.join("");
+ const conjuntos=db.conjuntos
+ .filter(x=>x.activo!==false);
 
+ const opcionesConjunto=
+ `<option value="">Seleccionar puesto</option>`+
+ conjuntos.map(x=>
+ `<option value="${escapar(x.nombre)}">
+ ${escapar(x.nombre)}
+ </option>`).join("");
+
+ [
+ "puestoGuarda",
+ "puestoNovedad",
+ "puestoRonda",
+ "puestoTurno",
+ "puestoPlanilla",
+ "puestoMinuta",
+ "puestoDotacion",
+ "puestoRequerimiento",
+ "puestoInforme"
+ ].forEach(id=>{
+  if($(id)) $(id).innerHTML=opcionesConjunto;
+ });
+
+
+ const guardas=db.guardas
+ .filter(x=>x.activo!==false);
+
+ const opcionesGuarda=
+ `<option value="">Seleccionar guarda</option>`+
+ guardas.map(x=>
+ `<option value="${escapar(x.nombre)}">
+ ${escapar(x.nombre)}
+ </option>`).join("");
+
+ [
+ "guardaNovedad",
+ "guardaRonda",
+ "entregaTurno",
+ "recibeTurno",
+ "guardaMinuta",
+ "guardaDotacion",
+ "guardaRequerimiento"
+ ].forEach(id=>{
+  if($(id)) $(id).innerHTML=opcionesGuarda;
+ });
 }
 
 
-function optsGuards(){
+/* ================= CONFIGURACIÓN ================= */
 
-return `<option value="">
-Seleccionar guarda
-</option>`+
+function guardarConfiguracion(){
 
-db.guardas
-.filter(x=>x.activo)
-.map(x=>
-`<option>${x.nombre}</option>`
-)
-.join("");
+ db.empresa=
+ valor("empresaConfig") ||
+ "PROGRESAR SECURITY LTDA.";
 
+ db.supervisores=[
+  valor("supervisor1Config")||"Supervisor Plata",
+  valor("supervisor2Config")||"Supervisor García"
+ ];
+
+ db.supervisorActual=
+ valor("supervisorActualConfig")||
+ "Supervisor Plata";
+
+ guardarDB();
+
+ render();
+
+ alert("✅ Configuración guardada.");
+}
+
+function cambiarSupervisor(){
+
+ const actual=db.supervisorActual;
+ const otro=db.supervisores.find(x=>x!==actual);
+
+ if(otro){
+  db.supervisorActual=otro;
+  guardarDB();
+  render();
+  alert("Ahora está trabajando: "+otro);
+ }
 }
 
 
-function setSelects(){
+/* ================= CONJUNTOS ================= */
 
-[
-"gc",
-"tc",
-"rc",
-"nc",
-"qc",
-"mc",
-"dc",
-"reportSet"
-].forEach(id=>{
+function limpiarConjunto(){
 
-if($(id))
-$(id).innerHTML=optsSets();
+ [
+ "idConjunto",
+ "nombreConjunto",
+ "direccionConjunto",
+ "administradorConjunto",
+ "telefonoAdministrador",
+ "observacionesConjunto"
+ ].forEach(id=>poner(id,""));
+}
 
-});
+function guardarConjunto(){
 
+ const nombre=valor("nombreConjunto");
 
-[
-"te",
-"tr",
-"rg",
-"ng",
-"qg",
-"mg",
-"dg"
-].forEach(id=>{
+ if(!nombre){
+  alert("Escribe el nombre del conjunto.");
+  return;
+ }
 
-if($(id))
-$(id).innerHTML=optsGuards();
+ const id=valor("idConjunto");
 
-});
+ if(id){
 
+  const c=db.conjuntos.find(x=>String(x.id)===id);
+
+  if(c){
+   c.nombre=nombre;
+   c.direccion=valor("direccionConjunto");
+   c.administrador=valor("administradorConjunto");
+   c.telefono=valor("telefonoAdministrador");
+   c.observaciones=valor("observacionesConjunto");
+  }
+
+ }else{
+
+  db.conjuntos.unshift({
+   id:nuevoId(),
+   nombre:nombre,
+   direccion:valor("direccionConjunto"),
+   administrador:valor("administradorConjunto"),
+   telefono:valor("telefonoAdministrador"),
+   observaciones:valor("observacionesConjunto"),
+   activo:true,
+   fecha:fecha()
+  });
+
+ }
+
+ limpiarConjunto();
+ guardarDB();
+ render();
+}
+
+function editarConjunto(id){
+
+ const c=db.conjuntos.find(x=>x.id===id);
+
+ if(!c)return;
+
+ poner("idConjunto",c.id);
+ poner("nombreConjunto",c.nombre);
+ poner("direccionConjunto",c.direccion);
+ poner("administradorConjunto",c.administrador);
+ poner("telefonoAdministrador",c.telefono);
+ poner("observacionesConjunto",c.observaciones);
+
+ window.scrollTo(0,0);
+}
+
+function activarConjunto(id){
+
+ const c=db.conjuntos.find(x=>x.id===id);
+
+ if(c){
+  c.activo=c.activo===false;
+  guardarDB();
+  render();
+ }
+}
+
+function eliminarConjunto(id){
+
+ if(!confirm(
+ "¿Eliminar definitivamente este puesto?\n\n"+
+ "Los registros históricos relacionados no se borrarán."
+ ))return;
+
+ db.conjuntos=db.conjuntos.filter(x=>x.id!==id);
+
+ guardarDB();
+ render();
 }
 
 
-function addConjunto(){
+/* ================= GUARDAS ================= */
 
-if(!val("cn")){
+function limpiarGuarda(){
 
-alert("Escribe el nombre del conjunto.");
+ [
+ "idGuarda",
+ "nombreGuarda",
+ "telefonoGuarda"
+ ].forEach(id=>poner(id,""));
 
-return;
-
+ poner("puestoGuarda","");
+ poner("turnoGuarda","06:00 - 18:00");
 }
 
-db.conjuntos.unshift({
+function guardarGuarda(){
 
-id:Date.now(),
+ const nombre=valor("nombreGuarda");
 
-nombre:val("cn"),
+ if(!nombre){
+  alert("Escribe el nombre del guarda.");
+  return;
+ }
 
-direccion:val("cd"),
+ const id=valor("idGuarda");
 
-admin:val("ca"),
+ if(id){
 
-tel:val("ct"),
+  const g=db.guardas.find(x=>String(x.id)===id);
 
-obs:val("co"),
+  if(g){
+   g.nombre=nombre;
+   g.telefono=valor("telefonoGuarda");
+   g.puesto=valor("puestoGuarda");
+   g.turno=valor("turnoGuarda");
+  }
 
-activo:true,
+ }else{
 
-fecha:now()
+  db.guardas.push({
+   id:nuevoId(),
+   nombre:nombre,
+   telefono:valor("telefonoGuarda"),
+   puesto:valor("puestoGuarda"),
+   turno:valor("turnoGuarda"),
+   activo:true,
+   fecha:fecha()
+  });
 
-});
+ }
 
-[
-"cn",
-"cd",
-"ca",
-"ct",
-"co"
-].forEach(x=>val(x,""));
-
-save();
-
+ limpiarGuarda();
+ guardarDB();
+ render();
 }
 
+function editarGuarda(id){
 
-function toggleSet(id){
+ const g=db.guardas.find(x=>x.id===id);
 
-let x=db.conjuntos.find(
-x=>x.id==id
-);
+ if(!g)return;
 
-if(x){
+ poner("idGuarda",g.id);
+ poner("nombreGuarda",g.nombre);
+ poner("telefonoGuarda",g.telefono);
+ poner("puestoGuarda",g.puesto);
+ poner("turnoGuarda",g.turno);
 
-x.activo=!x.activo;
-
-save();
-
+ window.scrollTo(0,0);
 }
 
+function activarGuarda(id){
+
+ const g=db.guardas.find(x=>x.id===id);
+
+ if(g){
+  g.activo=g.activo===false;
+  guardarDB();
+  render();
+ }
 }
 
+function eliminarGuarda(id){
 
-function addGuarda(){
+ if(!confirm(
+ "¿Eliminar definitivamente este guarda?"
+ ))return;
 
-if(!val("gn")){
+ db.guardas=db.guardas.filter(x=>x.id!==id);
 
-alert("Escribe el nombre.");
-
-return;
-
-}
-
-db.guardas.unshift({
-
-id:Date.now(),
-
-nombre:val("gn"),
-
-telefono:val("gt"),
-
-conjunto:val("gc"),
-
-turno:val("gh"),
-
-activo:true,
-
-fecha:now()
-
-});
-
-val("gn","");
-
-val("gt","");
-
-save();
-
+ guardarDB();
+ render();
 }
 
 
-function toggleGuard(id){
+/* ================= NOVEDADES ================= */
 
-let x=db.guardas.find(
-x=>x.id==id
-);
+function limpiarNovedad(){
 
-if(x){
+ [
+ "idNovedad",
+ "puestoNovedad",
+ "guardaNovedad",
+ "textoNovedad"
+ ].forEach(id=>poner(id,""));
 
-x.activo=!x.activo;
-
-save();
-
+ poner("prioridadNovedad","Media");
 }
 
-}
+function guardarNovedad(){
 
+ const puesto=valor("puestoNovedad");
+ const texto=valor("textoNovedad");
 
-function addTurno(){
+ if(!puesto||!texto){
+  alert("Completa puesto y novedad.");
+  return;
+ }
 
-if(!val("tc")){
+ const id=valor("idNovedad");
 
-alert("Selecciona conjunto.");
+ if(id){
 
-return;
+  const n=db.novedades.find(x=>String(x.id)===id);
 
-}
+  if(n){
+   n.puesto=puesto;
+   n.guarda=valor("guardaNovedad");
+   n.prioridad=valor("prioridadNovedad");
+   n.texto=texto;
+  }
 
-db.turnos.unshift({
+ }else{
 
-id:Date.now(),
+  db.novedades.unshift({
+   id:nuevoId(),
+   puesto:puesto,
+   guarda:valor("guardaNovedad"),
+   prioridad:valor("prioridadNovedad"),
+   texto:texto,
+   fecha:fecha()
+  });
 
-conjunto:val("tc"),
+ }
 
-entrega:val("te"),
-
-recibe:val("tr"),
-
-hora:val("th"),
-
-obs:val("to"),
-
-fecha:now()
-
-});
-
-save();
-
-}
-
-
-function addRonda(){
-
-if(!val("rc")){
-
-alert("Selecciona conjunto.");
-
-return;
-
-}
-
-db.rondas.unshift({
-
-id:Date.now(),
-
-conjunto:val("rc"),
-
-guarda:val("rg"),
-
-hora:val("rh"),
-
-obs:val("ro"),
-
-fecha:now()
-
-});
-
-save();
-
+ limpiarNovedad();
+ guardarDB();
+ render();
 }
 
 
-function addNovedad(){
+/* ================= RONDAS ================= */
 
-if(!val("nc")||!val("nd")){
+function limpiarRonda(){
 
-alert(
-"Completa conjunto y descripción."
-);
-
-return;
-
+ [
+ "idRonda",
+ "puestoRonda",
+ "guardaRonda",
+ "horaRonda",
+ "textoRonda"
+ ].forEach(id=>poner(id,""));
 }
 
-db.novedades.unshift({
+function guardarRonda(){
 
-id:Date.now(),
+ const puesto=valor("puestoRonda");
 
-conjunto:val("nc"),
+ if(!puesto){
+  alert("Selecciona el puesto.");
+  return;
+ }
 
-guarda:val("ng"),
+ const id=valor("idRonda");
 
-prioridad:val("np"),
+ const objeto={
+  puesto:puesto,
+  guarda:valor("guardaRonda"),
+  hora:valor("horaRonda"),
+  texto:valor("textoRonda")
+ };
 
-descripcion:val("nd"),
+ if(id){
 
-estado:"Pendiente",
+  const r=db.rondas.find(x=>String(x.id)===id);
+  if(r)Object.assign(r,objeto);
 
-fecha:now()
+ }else{
 
-});
+  db.rondas.unshift({
+   id:nuevoId(),
+   ...objeto,
+   fecha:fecha()
+  });
 
-save();
+ }
 
-}
-
-
-function addReq(){
-
-if(!val("qc")||!val("qd")){
-
-alert(
-"Completa conjunto y descripción."
-);
-
-return;
-
-}
-
-db.requerimientos.unshift({
-
-id:Date.now(),
-
-conjunto:val("qc"),
-
-guarda:val("qg"),
-
-tipo:val("qt"),
-
-prioridad:val("qp"),
-
-descripcion:val("qd"),
-
-estado:"Pendiente",
-
-fecha:now()
-
-});
-
-save();
-
+ limpiarRonda();
+ guardarDB();
+ render();
 }
 
 
-function addMinuta(){
+/* ================= TURNOS ================= */
 
-if(!val("mc")){
+function limpiarTurno(){
 
-alert("Selecciona conjunto.");
-
-return;
-
+ [
+ "idTurno",
+ "puestoTurno",
+ "entregaTurno",
+ "recibeTurno",
+ "horaTurno",
+ "observacionTurno"
+ ].forEach(id=>poner(id,""));
 }
 
-db.minutas.unshift({
+function guardarTurno(){
 
-id:Date.now(),
+ const puesto=valor("puestoTurno");
 
-conjunto:val("mc"),
+ if(!puesto){
+  alert("Selecciona el puesto.");
+  return;
+ }
 
-guarda:val("mg"),
+ const id=valor("idTurno");
 
-cantidad:val("mqty"),
+ const objeto={
+  puesto:puesto,
+  entrega:valor("entregaTurno"),
+  recibe:valor("recibeTurno"),
+  hora:valor("horaTurno"),
+  observacion:valor("observacionTurno")
+ };
 
-obs:val("mo"),
+ if(id){
 
-estado:"Pendiente",
+  const t=db.turnos.find(x=>String(x.id)===id);
+  if(t)Object.assign(t,objeto);
 
-fecha:now()
+ }else{
 
-});
+  db.turnos.unshift({
+   id:nuevoId(),
+   ...objeto,
+   fecha:fecha()
+  });
 
-save();
+ }
 
-}
-
-
-function addDot(){
-
-if(
-!val("dc")||
-!val("dg")||
-!val("de")
-){
-
-alert(
-"Completa conjunto, guarda y elemento."
-);
-
-return;
-
-}
-
-db.dotacion.unshift({
-
-id:Date.now(),
-
-conjunto:val("dc"),
-
-guarda:val("dg"),
-
-elemento:val("de"),
-
-talla:val("dt"),
-
-obs:val("do"),
-
-estado:"Pendiente",
-
-fecha:now()
-
-});
-
-save();
-
+ limpiarTurno();
+ guardarDB();
+ render();
 }
 
 
-function addPlanilla(input){
+/* ================= MINUTAS ================= */
 
-if(!input.files.length)
-return;
+function limpiarMinuta(){
 
-db.planillas.unshift({
+ [
+ "idMinuta",
+ "puestoMinuta",
+ "guardaMinuta",
+ "observacionMinuta"
+ ].forEach(id=>poner(id,""));
 
-id:Date.now(),
+ poner("cantidadMinuta","1");
+}
 
-archivo:input.files[0].name,
+function guardarMinuta(){
 
-fecha:now(),
+ const puesto=valor("puestoMinuta");
 
-estado:"Recibido"
+ if(!puesto){
+  alert("Selecciona el puesto.");
+  return;
+ }
 
-});
+ const id=valor("idMinuta");
 
-save();
+ const objeto={
+  puesto:puesto,
+  guarda:valor("guardaMinuta"),
+  cantidad:valor("cantidadMinuta")||"1",
+  observacion:valor("observacionMinuta")
+ };
 
-alert(
-"Planillaje recibido."
-);
+ if(id){
 
+  const m=db.minutas.find(x=>String(x.id)===id);
+  if(m)Object.assign(m,objeto);
+
+ }else{
+
+  db.minutas.unshift({
+   id:nuevoId(),
+   ...objeto,
+   estado:"Pendiente",
+   fecha:fecha()
+  });
+
+ }
+
+ limpiarMinuta();
+ guardarDB();
+ render();
+}
+
+function cambiarEstadoMinuta(id){
+
+ const x=db.minutas.find(a=>a.id===id);
+
+ if(x){
+  x.estado=x.estado==="Pendiente"?
+  "Entregada":"Pendiente";
+
+  guardarDB();
+  render();
+ }
 }
 
 
-function resolve(type,id){
+/* ================= DOTACIÓN ================= */
 
-let x=db[type].find(
-x=>x.id==id
-);
+function limpiarDotacion(){
 
-if(x){
+ [
+ "idDotacion",
+ "puestoDotacion",
+ "guardaDotacion",
+ "elementoDotacion",
+ "tallaDotacion",
+ "observacionDotacion"
+ ].forEach(id=>poner(id,""));
 
-x.estado="Resuelto";
-
-save();
-
+ poner("cantidadDotacion","1");
 }
 
+function guardarDotacion(){
+
+ const puesto=valor("puestoDotacion");
+ const guarda=valor("guardaDotacion");
+ const elemento=valor("elementoDotacion");
+
+ if(!puesto||!guarda||!elemento){
+  alert("Completa puesto, guarda y elemento.");
+  return;
+ }
+
+ const id=valor("idDotacion");
+
+ const objeto={
+  puesto:puesto,
+  guarda:guarda,
+  elemento:elemento,
+  talla:valor("tallaDotacion"),
+  cantidad:valor("cantidadDotacion")||"1",
+  observacion:valor("observacionDotacion")
+ };
+
+ if(id){
+
+  const d=db.dotaciones.find(x=>String(x.id)===id);
+  if(d)Object.assign(d,objeto);
+
+ }else{
+
+  db.dotaciones.unshift({
+   id:nuevoId(),
+   ...objeto,
+   estado:"Pendiente",
+   fecha:fecha()
+  });
+
+ }
+
+ limpiarDotacion();
+ guardarDB();
+ render();
 }
 
+function cambiarEstadoDotacion(id){
 
-function renderList(type){
+ const x=db.dotaciones.find(a=>a.id===id);
 
-let a=db[type];
+ if(x){
+  x.estado=x.estado==="Pendiente"?
+  "Entregada":"Pendiente";
 
-if(!a.length){
-
-return `
-<div class="empty">
-No hay registros.
-</div>
-`;
-
-}
-
-return a.map(x=>`
-
-<div class="item">
-
-<div class="row">
-
-<b>
-${x.conjunto||"Sin conjunto"}
-</b>
-
-<span
-class="badge ${x.estado=="Pendiente"?"pending":""}"
->
-${x.estado||"Registrado"}
-</span>
-
-</div>
-
-${x.guarda?
-`<p>👮 ${x.guarda}</p>`:""}
-
-${x.prioridad?
-`<p>🚨 ${x.prioridad}</p>`:""}
-
-${x.tipo?
-`<p>📂 ${x.tipo}</p>`:""}
-
-${x.elemento?
-`<p>👕 ${x.elemento}</p>`:""}
-
-<p>
-${x.descripcion||x.obs||""}
-</p>
-
-<small class="muted">
-${x.fecha}
-</small>
-
-${x.estado=="Pendiente"?
-
-`<div class="actions">
-
-<button
-class="secondary"
-onclick="resolve('${type}',${x.id})"
->
-✅ Marcar resuelto
-</button>
-
-</div>`
-
-:""}
-
-</div>
-
-`).join("");
-
+  guardarDB();
+  render();
+ }
 }
 
 
-function analizar(){
+/* ================= REQUERIMIENTOS ================= */
 
-let t=val("wt");
+function limpiarRequerimiento(){
 
-if(!t){
+ [
+ "idRequerimiento",
+ "puestoRequerimiento",
+ "guardaRequerimiento",
+ "textoRequerimiento"
+ ].forEach(id=>poner(id,""));
 
-alert(
-"Pega primero el mensaje."
-);
-
-return;
-
+ poner("prioridadRequerimiento","Media");
+ poner("tipoRequerimiento","Seguridad");
 }
 
-let l=t.toLowerCase();
+function guardarRequerimiento(){
 
-let tipo=
+ const puesto=valor("puestoRequerimiento");
+ const texto=valor("textoRequerimiento");
 
-l.includes("novedad")
-?"NOVEDAD":
+ if(!puesto||!texto){
+  alert("Completa puesto y descripción.");
+  return;
+ }
 
-l.includes("ronda")
-?"RONDA":
+ const id=valor("idRequerimiento");
 
-l.includes("minuta")
-?"MINUTA":
+ const objeto={
+  puesto:puesto,
+  guarda:valor("guardaRequerimiento"),
+  tipo:valor("tipoRequerimiento"),
+  prioridad:valor("prioridadRequerimiento"),
+  texto:texto
+ };
 
-l.includes("dotación")||
-l.includes("dotacion")
-?"DOTACIÓN":
+ if(id){
 
-l.includes("planillaje")
-?"PLANILLAJE":
+  const r=db.requerimientos.find(x=>String(x.id)===id);
+  if(r)Object.assign(r,objeto);
 
-l.includes("cambio de turno")
-?"CAMBIO DE TURNO":
+ }else{
 
-"REQUERIMIENTO";
+  db.requerimientos.unshift({
+   id:nuevoId(),
+   ...objeto,
+   estado:"Pendiente",
+   fecha:fecha()
+  });
 
-let p=
+ }
 
-/urgente|emergencia|alta prioridad/
-.test(l)
-?"Alta"
-:"Media";
+ limpiarRequerimiento();
+ guardarDB();
+ render();
+}
 
+function cambiarEstadoRequerimiento(id){
 
-$("waResult").innerHTML=`
+ const x=db.requerimientos.find(a=>a.id===id);
 
-<div class="result">
+ if(x){
+  x.estado=x.estado==="Pendiente"?
+  "Atendido":"Pendiente";
 
-<b>Tipo detectado:</b>
-${tipo}
-
-<br>
-
-<b>Prioridad:</b>
-${p}
-
-<br><br>
-
-${t}
-
-<div class="actions">
-
-<button
-class="primary"
-onclick="createWA('${tipo}','${p}')"
->
-Crear registro
-</button>
-
-</div>
-
-</div>
-
-`;
-
+  guardarDB();
+  render();
+ }
 }
 
 
-function createWA(tipo,p){
+/* ================= PLANILLAJES ================= */
 
-let x={
+function registrarPlanilla(input){
 
-id:Date.now(),
+ if(!input.files.length)return;
 
-conjunto:"Por identificar",
+ const puesto=valor("puestoPlanilla");
 
-guarda:"WhatsApp",
+ if(!puesto){
+  alert("Selecciona primero el puesto.");
+  input.value="";
+  return;
+ }
 
-descripcion:val("wt"),
+ db.planillas.unshift({
+  id:nuevoId(),
+  puesto:puesto,
+  archivo:input.files[0].name,
+  fecha:fecha()
+ });
 
-prioridad:p,
-
-estado:"Pendiente",
-
-fecha:now()
-
-};
-
-if(tipo=="NOVEDAD")
-
-db.novedades.unshift(x);
-
-else
-
-db.requerimientos.unshift({
-
-...x,
-
-tipo
-
-});
-
-save();
-
-alert(
-"Registro creado. Revísalo en el módulo correspondiente."
-);
-
+ input.value="";
+ guardarDB();
+ render();
 }
 
 
-function saveConfig(){
+/* ================= ELIMINACIÓN ================= */
 
-db.config.nombre=val("appn");
+function eliminar(tipo,id){
 
-db.config.supervisor=val("sup");
+ if(!confirm("¿Eliminar este registro?"))return;
 
-db.config.empresa=val("emp");
+ db[tipo]=db[tipo].filter(x=>x.id!==id);
 
-save();
-
-alert(
-"Configuración guardada."
-);
-
+ guardarDB();
+ render();
 }
 
 
-function dataForSet(n){
+/* ================= WHATSAPP ================= */
 
-return{
+function analizarWhatsApp(){
 
-turnos:db.turnos.filter(
-x=>x.conjunto==n
-),
+ const texto=valor("mensajeWhatsApp");
 
-rondas:db.rondas.filter(
-x=>x.conjunto==n
-),
+ if(!texto){
+  alert("Pega primero el mensaje de WhatsApp.");
+  return;
+ }
 
-novedades:db.novedades.filter(
-x=>x.conjunto==n
-),
+ let tipo="REQUERIMIENTO";
 
-req:db.requerimientos.filter(
-x=>x.conjunto==n
-),
+ const t=texto.toLowerCase();
 
-minutas:db.minutas.filter(
-x=>x.conjunto==n
-),
+ if(t.includes("ronda"))
+  tipo="RONDA";
 
-dot:db.dotacion.filter(
-x=>x.conjunto==n
-),
+ else if(t.includes("novedad"))
+  tipo="NOVEDAD";
 
-plan:db.planillas.filter(
-x=>x.conjunto==n
-)
+ else if(t.includes("turno"))
+  tipo="CAMBIO DE TURNO";
 
-};
+ else if(t.includes("dotación")||t.includes("dotacion"))
+  tipo="DOTACIÓN";
 
+ else if(t.includes("minuta"))
+  tipo="MINUTA";
+
+ $("resultadoWhatsApp").innerHTML=
+ `<div class="result">
+ <b>Tipo detectado:</b> ${tipo}
+
+ <br><br>
+
+ ${escapar(texto)}
+
+ <br><br>
+
+ <span class="small">
+ Usa el formulario correspondiente para guardar la información.
+ </span>
+ </div>`;
 }
 
 
-function lines(title,a,fn){
+/* =========================================================
+   INFORME PARA ADMINISTRADOR
+   SOLO OPERACIÓN DEL PUESTO
+========================================================= */
 
-if(!a.length)
+function generarInformePuesto(puesto){
 
-return `${title}
-• Sin registros.
-`;
+ const c=db.conjuntos.find(x=>x.nombre===puesto);
 
-return title+
-"\n"+
-a.map(fn).join("\n");
+ if(!c)return "No se encontró el puesto.";
 
-}
+ const guardas=db.guardas.filter(x=>
+  x.puesto===puesto && x.activo!==false
+ );
 
+ const rondas=db.rondas.filter(x=>x.puesto===puesto);
 
-function buildPuesto(n){
+ const novedades=db.novedades.filter(x=>
+  x.puesto===puesto
+ );
 
-let c=db.conjuntos.find(
-x=>x.nombre==n
-);
+ const turnos=db.turnos.filter(x=>
+  x.puesto===puesto
+ );
 
-if(!c)
+ const planillas=db.planillas.filter(x=>
+  x.puesto===puesto
+ );
 
-return "Selecciona un conjunto.";
-
-let d=dataForSet(n);
-
-return `PROGRESAR SECURITY
+ let texto=
+ `PROGRESAR SECURITY LTDA.
 INFORME DE SUPERVISIÓN
 
-PUESTO: ${n}
-ADMINISTRADOR: ${c.admin||"No registrado"}
-FECHA: ${new Date().toLocaleDateString("es-CO")}
-SUPERVISOR: ${db.config.supervisor}
+FECHA: ${hoy()}
+SUPERVISOR: ${db.supervisorActual}
 
-${lines(
-"CAMBIO DE TURNO",
-d.turnos,
-x=>`• Entrega: ${x.entrega||"-"} | Recibe: ${x.recibe||"-"} | Hora: ${x.hora||"-"}${x.obs?" | "+x.obs:""}`
-)}
+PUESTO: ${puesto}
+ADMINISTRADOR: ${c.administrador||"No registrado"}
 
-${lines(
-"RONDAS",
-d.rondas,
-x=>`• ${x.hora||"-"} - ${x.guarda||"-"}: ${x.obs||"Sin observación"}`
-)}
+========================
+PERSONAL DEL PUESTO
+========================
 
-${lines(
-"NOVEDADES",
-d.novedades,
-x=>`• [${x.prioridad||"Media"}] ${x.descripcion||""} (${x.guarda||"Sin guarda"})`
-)}
+`;
 
-${lines(
-"REQUERIMIENTOS",
-d.req,
-x=>`• [${x.prioridad||"Media"}] ${x.tipo||"General"}: ${x.descripcion||""} - ${x.estado||""}`
-)}
+ if(guardas.length){
 
-${lines(
-"MINUTAS",
-d.minutas,
-x=>`• ${x.cantidad||1} unidad(es) - ${x.guarda||"Sin guarda"}: ${x.obs||""} - ${x.estado||""}`
-)}
+  guardas.forEach(g=>{
+   texto+=`• ${g.nombre} — ${g.turno||"Turno no registrado"}\n`;
+  });
 
-${lines(
-"DOTACIÓN",
-d.dot,
-x=>`• ${x.guarda||"Sin guarda"} - ${x.elemento||""} ${x.talla||""}: ${x.obs||""} - ${x.estado||""}`
-)}
+ }else{
+  texto+="• Sin personal registrado.\n";
+ }
 
-${lines(
-"PLANILLAJE VEHICULAR",
-d.plan,
-x=>`• Archivo recibido: ${x.archivo} - ${x.fecha}`
-)}
 
-PENDIENTES: ${
-[
-...d.novedades,
-...d.req,
-...d.minutas,
-...d.dot
-].filter(
-x=>x.estado=="Pendiente"
-).length
+ texto+=`
+
+========================
+CAMBIOS DE TURNO
+========================
+
+`;
+
+ if(turnos.length){
+
+  turnos.forEach(t=>{
+   texto+=
+   `• ${t.hora||"--"} | Entrega: ${t.entrega||"--"} | `+
+   `Recibe: ${t.recibe||"--"}\n`;
+
+   if(t.observacion)
+    texto+=`  Observación: ${t.observacion}\n`;
+  });
+
+ }else{
+  texto+="• Sin cambios registrados.\n";
+ }
+
+
+ texto+=`
+
+========================
+RONDAS
+========================
+
+`;
+
+ if(rondas.length){
+
+  rondas.forEach(r=>{
+   texto+=
+   `• ${r.hora||"--"} — ${r.guarda||"--"}: `+
+   `${r.texto||"Sin observación"}\n`;
+  });
+
+ }else{
+  texto+="• Sin rondas registradas.\n";
+ }
+
+
+ texto+=`
+
+========================
+NOVEDADES
+========================
+
+`;
+
+ if(novedades.length){
+
+  novedades.forEach(n=>{
+   texto+=
+   `• [${n.prioridad}] ${n.texto}`+
+   `${n.guarda?" — Reporta: "+n.guarda:""}\n`;
+  });
+
+ }else{
+  texto+="• Sin novedades registradas.\n";
+ }
+
+
+ texto+=`
+
+========================
+PLANILLAJE VEHICULAR
+========================
+
+`;
+
+ if(planillas.length){
+
+  planillas.forEach(p=>{
+   texto+=`• ${p.archivo} — ${p.fecha}\n`;
+  });
+
+ }else{
+  texto+="• Sin planillajes registrados.\n";
+ }
+
+
+ texto+=`
+
+========================
+SUPERVISOR
+========================
+
+${db.supervisorActual}
+PROGRESAR SECURITY LTDA.`;
+
+ return texto;
 }
 
-SUPERVISOR PLATA
-PROGRESAR SECURITY`;
+function mostrarInformePuesto(){
 
+ const puesto=valor("puestoInforme");
+
+ $("informePuesto").textContent=
+ puesto?
+ generarInformePuesto(puesto):
+ "Selecciona un puesto.";
+}
+
+function copiarInformePuesto(){
+
+ const puesto=valor("puestoInforme");
+
+ if(!puesto){
+  alert("Selecciona un puesto.");
+  return;
+ }
+
+ const texto=generarInformePuesto(puesto);
+
+ copiar(texto);
 }
 
 
-function previewPuesto(){
+/* =========================================================
+   CERRAR SOLO UN PUESTO
+   NO BORRA DOTACIÓN, MINUTAS NI REQUERIMIENTOS
+========================================================= */
 
-let n=val("reportSet");
+function cerrarPuesto(){
 
-$("puestoPreview").textContent=
+ const puesto=valor("puestoInforme");
 
-n?
-buildPuesto(n):
-"Selecciona un conjunto.";
+ if(!puesto){
+  alert("Selecciona un puesto.");
+  return;
+ }
 
+ const confirmar=confirm(
+ `¿Ya enviaste el informe de ${puesto}?\n\n`+
+ `Se limpiarán:\n`+
+ `• Novedades\n`+
+ `• Rondas\n`+
+ `• Cambios de turno\n`+
+ `• Planillajes registrados\n\n`+
+ `NO se eliminarán:\n`+
+ `• Guardas\n`+
+ `• Conjunto\n`+
+ `• Administrador\n`+
+ `• Dotaciones\n`+
+ `• Minutas\n`+
+ `• Requerimientos`
+ );
+
+ if(!confirmar)return;
+
+
+ db.novedades=db.novedades.filter(x=>x.puesto!==puesto);
+
+ db.rondas=db.rondas.filter(x=>x.puesto!==puesto);
+
+ db.turnos=db.turnos.filter(x=>x.puesto!==puesto);
+
+ db.planillas=db.planillas.filter(x=>x.puesto!==puesto);
+
+ guardarDB();
+
+ alert(
+ "✅ Informe cerrado.\n\n"+
+ "El puesto está listo para comenzar un nuevo período."
+ );
+
+ render();
 }
 
 
-async function copyText(text){
+/* =========================================================
+   INFORME GENERAL PARA JEFES
+   AQUÍ SÍ APARECEN DOTACIÓN, MINUTAS Y REQUERIMIENTOS
+========================================================= */
 
-try{
+function generarInformeGeneral(){
 
-await navigator.clipboard.writeText(text);
+ const puestos=db.conjuntos.filter(x=>x.activo!==false);
 
-alert(
-"Informe copiado. Ahora pégalo en WhatsApp."
-);
-
-}
-
-catch(e){
-
-alert(
-"No se pudo copiar automáticamente. Mantén presionado el texto y copia."
-);
-
-}
-
-}
-
-
-function copiarPuesto(){
-
-let n=val("reportSet");
-
-if(!n){
-
-alert(
-"Selecciona un conjunto."
-);
-
-return;
-
-}
-
-let t=buildPuesto(n);
-
-$("puestoPreview").textContent=t;
-
-copyText(t);
-
-}
-
-
-function buildGeneral(){
-
-let active=db.conjuntos.filter(
-x=>x.activo
-);
-
-if(!active.length)
-
-return "No hay conjuntos activos.";
-
-let out=`PROGRESAR SECURITY
+ let texto=
+ `PROGRESAR SECURITY LTDA.
 INFORME GENERAL DE SUPERVISIÓN
 
-FECHA: ${new Date().toLocaleDateString("es-CO")}
-SUPERVISOR: ${db.config.supervisor}
-TOTAL DE PUESTOS: ${active.length}
+FECHA: ${hoy()}
+SUPERVISOR: ${db.supervisorActual}
+
+TOTAL DE PUESTOS: ${puestos.length}
 
 `;
 
-active.forEach((c,i)=>{
+ puestos.forEach((c,index)=>{
 
-out+=`
+  const p=c.nombre;
 
-========================
-PUESTO ${i+1}: ${c.nombre}
-ADMINISTRADOR: ${c.admin||"No registrado"}
-========================
+  const guardas=db.guardas.filter(x=>
+   x.puesto===p && x.activo!==false
+  );
+
+  const novedades=db.novedades.filter(x=>x.puesto===p);
+
+  const rondas=db.rondas.filter(x=>x.puesto===p);
+
+  const turnos=db.turnos.filter(x=>x.puesto===p);
+
+  const planillas=db.planillas.filter(x=>x.puesto===p);
+
+  const dot=db.dotaciones.filter(x=>x.puesto===p);
+
+  const min=db.minutas.filter(x=>x.puesto===p);
+
+  const req=db.requerimientos.filter(x=>x.puesto===p);
+
+
+  texto+=`
+
+==================================================
+${index+1}. ${p}
+==================================================
+
+ADMINISTRADOR:
+${c.administrador||"No registrado"}
+
+PERSONAL:
 `;
 
-let d=dataForSet(c.nombre);
+  if(guardas.length){
+   guardas.forEach(g=>{
+    texto+=
+    `• ${g.nombre} — ${g.turno||"Sin turno"}\n`;
+   });
+  }else{
+   texto+="• Sin personal registrado.\n";
+  }
 
-out+=`
 
-Novedades: ${d.novedades.length}
-Requerimientos: ${d.req.length}
-Rondas: ${d.rondas.length}
-Cambios de turno: ${d.turnos.length}
-Minutas: ${d.minutas.length}
-Dotación: ${d.dot.length}
-Planillajes: ${d.plan.length}
-Pendientes: ${
-[
-...d.novedades,
-...d.req,
-...d.minutas,
-...d.dot
-].filter(
-x=>x.estado=="Pendiente"
-).length
-}
+  texto+=`
 
+CAMBIOS DE TURNO:
 `;
 
-if(d.novedades.length)
+  if(turnos.length){
+   turnos.forEach(t=>{
+    texto+=
+    `• ${t.hora||"--"} | ${t.entrega||"--"} → `+
+    `${t.recibe||"--"}\n`;
+   });
+  }else texto+="• Ninguno.\n";
 
-out+=
 
-d.novedades
-.map(
-x=>`• Novedad: ${x.descripcion}`
-)
-.join("\n")+
-"\n";
+  texto+=`
 
-if(d.req.length)
+RONDAS:
+`;
 
-out+=
+  if(rondas.length){
+   rondas.forEach(r=>{
+    texto+=
+    `• ${r.hora||"--"} — ${r.guarda||"--"}: `+
+    `${r.texto||""}\n`;
+   });
+  }else texto+="• Ninguna.\n";
 
-d.req
-.map(
-x=>`• Requerimiento: ${x.descripcion}`
-)
-.join("\n")+
-"\n";
 
-});
+  texto+=`
 
-return out+
+NOVEDADES:
+`;
 
-`
+  if(novedades.length){
+   novedades.forEach(n=>{
+    texto+=
+    `• [${n.prioridad}] ${n.texto}`+
+    `${n.guarda?" — "+n.guarda:""}\n`;
+   });
+  }else texto+="• Ninguna.\n";
 
-SUPERVISOR PLATA
-PROGRESAR SECURITY`;
 
+  texto+=`
+
+PLANILLAJES:
+`;
+
+  if(planillas.length){
+   planillas.forEach(x=>{
+    texto+=`• ${x.archivo}\n`;
+   });
+  }else texto+="• Ninguno.\n";
+
+
+  /* DOTACIÓN */
+
+  texto+=`
+
+DOTACIÓN:
+`;
+
+  if(dot.length){
+
+   dot.forEach(d=>{
+    texto+=
+    `• Guarda: ${d.guarda||"--"} | `+
+    `${d.elemento||"--"} | `+
+    `Talla: ${d.talla||"--"} | `+
+    `Cantidad: ${d.cantidad||"1"} | `+
+    `Estado: ${d.estado}\n`;
+   });
+
+  }else{
+   texto+="• Sin solicitudes de dotación.\n";
+  }
+
+
+  /* MINUTAS */
+
+  texto+=`
+
+MINUTAS:
+`;
+
+  if(min.length){
+
+   min.forEach(m=>{
+    texto+=
+    `• Guarda: ${m.guarda||"--"} | `+
+    `Cantidad: ${m.cantidad||"1"} | `+
+    `Estado: ${m.estado}`+
+    `${m.observacion?" | "+m.observacion:""}\n`;
+   });
+
+  }else{
+   texto+="• Sin solicitudes de minutas.\n";
+  }
+
+
+  /* REQUERIMIENTOS */
+
+  texto+=`
+
+REQUERIMIENTOS:
+`;
+
+  if(req.length){
+
+   req.forEach(r=>{
+    texto+=
+    `• ${r.tipo} | Prioridad: ${r.prioridad} | `+
+    `Solicita: ${r.guarda||"--"} | `+
+    `${r.texto} | Estado: ${r.estado}\n`;
+   });
+
+  }else{
+   texto+="• Sin requerimientos.\n";
+  }
+
+ });
+
+
+ texto+=`
+
+==================================================
+FIN DEL INFORME
+==================================================
+
+SUPERVISOR:
+${db.supervisorActual}
+
+PROGRESAR SECURITY LTDA.`;
+
+ return texto;
+}
+
+function copiarInformeGeneral(){
+
+ const texto=generarInformeGeneral();
+
+ $("informeGeneral").textContent=texto;
+
+ copiar(texto);
 }
 
 
-function copiarGeneral(){
+/* =========================================================
+   CERRAR TODOS LOS PUESTOS
+   NO BORRA DOTACIÓN, MINUTAS NI REQUERIMIENTOS
+========================================================= */
 
-let t=buildGeneral();
+function cerrarTodosLosPuestos(){
 
-$("generalPreview").textContent=t;
+ const confirmar=confirm(
+ `¿Ya enviaste el informe general?\n\n`+
+ `Se limpiará la información operativa de TODOS los puestos:\n\n`+
+ `• Novedades\n`+
+ `• Rondas\n`+
+ `• Cambios de turno\n`+
+ `• Planillajes\n\n`+
+ `NO se eliminarán:\n`+
+ `• Guardas\n`+
+ `• Conjuntos\n`+
+ `• Administradores\n`+
+ `• Dotaciones\n`+
+ `• Minutas\n`+
+ `• Requerimientos`
+ );
 
-copyText(t);
+ if(!confirmar)return;
 
+
+ db.novedades=[];
+ db.rondas=[];
+ db.turnos=[];
+ db.planillas=[];
+
+ guardarDB();
+
+ alert(
+ "✅ Informe general cerrado.\n\n"+
+ "Los puestos están listos para comenzar un nuevo período."
+ );
+
+ render();
 }
 
 
-function resetData(){
+/* ================= COPIAR ================= */
 
-if(
-confirm(
-"¿Borrar todos los datos?"
-)
-){
+function copiar(texto){
 
-localStorage.removeItem(KEY);
+ if(navigator.clipboard){
 
-location.reload();
+  navigator.clipboard.writeText(texto)
+  .then(()=>{
+   alert(
+    "✅ Informe copiado.\n\n"+
+    "Ahora puedes pegarlo en WhatsApp."
+   );
+  })
+  .catch(()=>{
+   alert(
+    "No fue posible copiar automáticamente. "+
+    "Selecciona el texto y cópialo."
+   );
+  });
 
+ }else{
+
+  alert("Selecciona el texto y cópialo.");
+
+ }
 }
 
-}
 
+/* ================= RENDER ================= */
 
 function render(){
 
-$("appTitle").textContent=
-db.config.nombre;
+ $("titulo").textContent=
+ db.empresa||"PROGRESAR SECURITY LTDA.";
 
-$("date").textContent=
-new Date().toLocaleDateString(
-"es-CO",
-{
-weekday:"long",
-year:"numeric",
-month:"long",
-day:"numeric"
+ $("subtitulo").textContent=
+ db.supervisorActual;
+
+ $("supervisorActual").textContent=
+ db.supervisorActual;
+
+
+ $("totalConjuntos").textContent=
+ db.conjuntos.filter(x=>x.activo!==false).length;
+
+ $("totalGuardas").textContent=
+ db.guardas.filter(x=>x.activo!==false).length;
+
+ $("totalNovedades").textContent=
+ db.novedades.length;
+
+
+ const pendientes=
+ db.dotaciones.filter(x=>x.estado==="Pendiente").length+
+ db.minutas.filter(x=>x.estado==="Pendiente").length+
+ db.requerimientos.filter(x=>x.estado==="Pendiente").length;
+
+ $("totalPendientes").textContent=pendientes;
+
+
+ $("resumenPendientes").innerHTML=
+ pendientes?
+ `<p>
+ 👕 Dotaciones pendientes:
+ <b>${db.dotaciones.filter(x=>x.estado==="Pendiente").length}</b>
+ </p>
+ <p>
+ 📒 Minutas pendientes:
+ <b>${db.minutas.filter(x=>x.estado==="Pendiente").length}</b>
+ </p>
+ <p>
+ 🛠️ Requerimientos pendientes:
+ <b>${db.requerimientos.filter(x=>x.estado==="Pendiente").length}</b>
+ </p>`
+ :
+ `<div class="empty">✅ No hay pendientes.</div>`;
+
+
+ actualizarSelects();
+
+
+ /* CONFIG */
+
+ if($("empresaConfig")){
+  $("empresaConfig").value=db.empresa;
+  $("supervisor1Config").value=
+   db.supervisores[0]||"Supervisor Plata";
+  $("supervisor2Config").value=
+   db.supervisores[1]||"Supervisor García";
+  $("supervisorActualConfig").value=
+   db.supervisorActual;
+ }
+
+
+ /* CONJUNTOS */
+
+ $("listaConjuntos").innerHTML=
+ db.conjuntos.length?
+
+ db.conjuntos.map(c=>`
+
+ <div class="item">
+
+ <div class="row">
+ <b>🏢 ${escapar(c.nombre)}</b>
+
+ <span class="badge ${c.activo===false?"red":""}">
+ ${c.activo===false?"Inactivo":"Activo"}
+ </span>
+ </div>
+
+ <p>👤 Administrador:
+ ${escapar(c.administrador||"No registrado")}</p>
+
+ <p>📍 ${escapar(c.direccion||"Sin dirección")}</p>
+
+ ${c.telefono?
+ `<p>📱 ${escapar(c.telefono)}</p>`:""}
+
+ <div class="actions">
+
+ <button class="warning"
+ onclick="editarConjunto(${c.id})">
+ ✏️ Editar
+ </button>
+
+ <button class="secondary"
+ onclick="activarConjunto(${c.id})">
+ ${c.activo===false?"▶️ Activar":"⏸️ Desactivar"}
+ </button>
+
+ <button class="danger"
+ onclick="eliminarConjunto(${c.id})">
+ 🗑️ Eliminar
+ </button>
+
+ </div>
+
+ </div>
+ `).join("")
+
+ :
+ `<div class="empty">
+ No hay conjuntos registrados.
+ </div>`;
+
+
+ /* PERSONAL */
+
+ $("listaPersonal").innerHTML=
+ db.conjuntos.length?
+
+ db.conjuntos.map(c=>{
+
+  const guardas=db.guardas.filter(
+   g=>g.puesto===c.nombre
+  );
+
+  return `
+
+  <div class="item">
+
+  <h3>🏢 ${escapar(c.nombre)}</h3>
+
+  ${
+   guardas.length?
+
+   guardas.map(g=>`
+
+   <div class="card">
+
+   <div class="row">
+
+   <b>👮 ${escapar(g.nombre)}</b>
+
+   <span class="badge ${g.activo===false?"red":""}">
+   ${g.activo===false?"Inactivo":"Activo"}
+   </span>
+
+   </div>
+
+   <p>⏰ ${escapar(g.turno||"Sin turno")}</p>
+
+   ${g.telefono?
+   `<p>📱 ${escapar(g.telefono)}</p>`:""}
+
+   <div class="actions">
+
+   <button class="warning"
+   onclick="editarGuarda(${g.id})">
+   ✏️ Editar
+   </button>
+
+   <button class="secondary"
+   onclick="activarGuarda(${g.id})">
+   ${g.activo===false?"▶️ Activar":"⏸️ Inactivar"}
+   </button>
+
+   <button class="danger"
+   onclick="eliminarGuarda(${g.id})">
+   🗑️ Eliminar
+   </button>
+
+   </div>
+
+   </div>
+
+   `).join("")
+
+   :
+   `<div class="empty">
+   No hay guardas asignados.
+   </div>`
+  }
+
+  </div>
+
+  `;
+
+ }).join("")
+
+ :
+ `<div class="empty">
+ Primero agrega los conjuntos.
+ </div>`;
+
+
+ /* NOVEDADES */
+
+ $("listaNovedades").innerHTML=
+ listaOperativa("novedades");
+
+
+ /* RONDAS */
+
+ $("listaRondas").innerHTML=
+ db.rondas.length?
+
+ db.rondas.map(r=>`
+
+ <div class="item">
+
+ <b>🏢 ${escapar(r.puesto)}</b>
+
+ <p>
+ 👮 ${escapar(r.guarda||"Sin guarda")}
+ |
+ ⏰ ${escapar(r.hora||"--")}
+ </p>
+
+ <p>${escapar(r.texto||"")}</p>
+
+ <small>${escapar(r.fecha)}</small>
+
+ <div class="actions">
+
+ <button class="warning"
+ onclick="editarRonda(${r.id})">
+ ✏️ Editar
+ </button>
+
+ <button class="danger"
+ onclick="eliminar('rondas',${r.id})">
+ 🗑️ Eliminar
+ </button>
+
+ </div>
+
+ </div>
+
+ `).join("")
+
+ :
+ `<div class="empty">No hay rondas.</div>`;
+
+
+ /* TURNOS */
+
+ $("listaTurnos").innerHTML=
+ db.turnos.length?
+
+ db.turnos.map(t=>`
+
+ <div class="item">
+
+ <b>🏢 ${escapar(t.puesto)}</b>
+
+ <p>
+ 🔄 ${escapar(t.entrega||"--")}
+ →
+ ${escapar(t.recibe||"--")}
+ </p>
+
+ <p>⏰ ${escapar(t.hora||"--")}</p>
+
+ <p>${escapar(t.observacion||"")}</p>
+
+ <div class="actions">
+
+ <button class="warning"
+ onclick="editarTurno(${t.id})">
+ ✏️ Editar
+ </button>
+
+ <button class="danger"
+ onclick="eliminar('turnos',${t.id})">
+ 🗑️ Eliminar
+ </button>
+
+ </div>
+
+ </div>
+
+ `).join("")
+
+ :
+ `<div class="empty">No hay cambios de turno.</div>`;
+
+
+ /* PLANILLAJES */
+
+ $("listaPlanillas").innerHTML=
+ db.planillas.length?
+
+ db.planillas.map(p=>`
+
+ <div class="item">
+
+ <b>🚗 ${escapar(p.puesto)}</b>
+
+ <p>📄 ${escapar(p.archivo)}</p>
+
+ <small>${escapar(p.fecha)}</small>
+
+ <div class="actions">
+
+ <button class="danger"
+ onclick="eliminar('planillas',${p.id})">
+ 🗑️ Eliminar
+ </button>
+
+ </div>
+
+ </div>
+
+ `).join("")
+
+ :
+ `<div class="empty">No hay planillajes registrados.</div>`;
+
+
+ /* MINUTAS */
+
+ $("listaMinutas").innerHTML=
+ db.minutas.length?
+
+ db.minutas.map(m=>`
+
+ <div class="item">
+
+ <div class="row">
+ <b>📒 ${escapar(m.puesto)}</b>
+
+ <span class="badge ${m.estado==="Pendiente"?"red":""}">
+ ${escapar(m.estado)}
+ </span>
+ </div>
+
+ <p>👮 Guarda:
+ ${escapar(m.guarda||"No registrado")}</p>
+
+ <p>📦 Cantidad:
+ ${escapar(m.cantidad||"1")}</p>
+
+ ${m.observacion?
+ `<p>${escapar(m.observacion)}</p>`:""}
+
+ <div class="actions">
+
+ <button class="warning"
+ onclick="editarMinuta(${m.id})">
+ ✏️ Editar
+ </button>
+
+ <button class="success"
+ onclick="cambiarEstadoMinuta(${m.id})">
+ ${m.estado==="Pendiente"?
+ "✅ Entregada":"↩️ Pendiente"}
+ </button>
+
+ <button class="danger"
+ onclick="eliminar('minutas',${m.id})">
+ 🗑️ Eliminar
+ </button>
+
+ </div>
+
+ </div>
+
+ `).join("")
+
+ :
+ `<div class="empty">No hay solicitudes de minutas.</div>`;
+
+
+ /* DOTACIÓN */
+
+ $("listaDotacion").innerHTML=
+ db.dotaciones.length?
+
+ db.dotaciones.map(d=>`
+
+ <div class="item">
+
+ <div class="row">
+
+ <b>👕 ${escapar(d.puesto)}</b>
+
+ <span class="badge ${d.estado==="Pendiente"?"red":""}">
+ ${escapar(d.estado)}
+ </span>
+
+ </div>
+
+ <p>
+ 👮 <b>Guarda:</b>
+ ${escapar(d.guarda)}
+ </p>
+
+ <p>
+ 📦 <b>Elemento:</b>
+ ${escapar(d.elemento)}
+ </p>
+
+ <p>
+ 📏 <b>Talla:</b>
+ ${escapar(d.talla||"--")}
+ |
+ <b>Cantidad:</b>
+ ${escapar(d.cantidad||"1")}
+ </p>
+
+ ${d.observacion?
+ `<p>${escapar(d.observacion)}</p>`:""}
+
+ <div class="actions">
+
+ <button class="warning"
+ onclick="editarDotacion(${d.id})">
+ ✏️ Editar
+ </button>
+
+ <button class="success"
+ onclick="cambiarEstadoDotacion(${d.id})">
+ ${d.estado==="Pendiente"?
+ "✅ Entregada":"↩️ Pendiente"}
+ </button>
+
+ <button class="danger"
+ onclick="eliminar('dotaciones',${d.id})">
+ 🗑️ Eliminar
+ </button>
+
+ </div>
+
+ </div>
+
+ `).join("")
+
+ :
+ `<div class="empty">No hay solicitudes de dotación.</div>`;
+
+
+ /* REQUERIMIENTOS */
+
+ $("listaRequerimientos").innerHTML=
+ db.requerimientos.length?
+
+ db.requerimientos.map(r=>`
+
+ <div class="item">
+
+ <div class="row">
+
+ <b>🛠️ ${escapar(r.puesto)}</b>
+
+ <span class="badge ${r.estado==="Pendiente"?"red":""}">
+ ${escapar(r.estado)}
+ </span>
+
+ </div>
+
+ <p>
+ 👮 Solicitado por:
+ ${escapar(r.guarda||"No registrado")}
+ </p>
+
+ <p>
+ 📌 ${escapar(r.tipo)}
+ |
+ 🚨 ${escapar(r.prioridad)}
+ </p>
+
+ <p>${escapar(r.texto)}</p>
+
+ <div class="actions">
+
+ <button class="warning"
+ onclick="editarRequerimiento(${r.id})">
+ ✏️ Editar
+ </button>
+
+ <button class="success"
+ onclick="cambiarEstadoRequerimiento(${r.id})">
+ ${r.estado==="Pendiente"?
+ "✅ Atendido":"↩️ Pendiente"}
+ </button>
+
+ <button class="danger"
+ onclick="eliminar('requerimientos',${r.id})">
+ 🗑️ Eliminar
+ </button>
+
+ </div>
+
+ </div>
+
+ `).join("")
+
+ :
+ `<div class="empty">No hay requerimientos.</div>`;
+
+
+ /* INFORME GENERAL */
+
+ if($("informeGeneral")){
+  $("informeGeneral").textContent=
+   generarInformeGeneral();
+ }
+
+ if($("informePuesto")&&valor("puestoInforme")){
+  $("informePuesto").textContent=
+   generarInformePuesto(valor("puestoInforme"));
+ }
+
 }
-);
 
-let sa=
-db.conjuntos.filter(
-x=>x.activo
-).length;
 
-let ga=
-db.guardas.filter(
-x=>x.activo
-).length;
+/* ================= LISTA NOVEDADES ================= */
 
-let pa=[
-...db.novedades,
-...db.requerimientos,
-...db.minutas,
-...db.dotacion
-].filter(
-x=>x.estado=="Pendiente"
-).length;
+function listaOperativa(tipo){
 
-$("sets").textContent=sa;
+ const a=db[tipo];
 
-$("guards").textContent=ga;
+ if(!a.length)
+  return `<div class="empty">No hay registros.</div>`;
 
-$("novs").textContent=
-db.novedades.length;
+ return a.map(x=>`
 
-$("pend").textContent=pa;
+ <div class="item">
 
-$("homePending").innerHTML=
+ <div class="row">
+ <b>🏢 ${escapar(x.puesto)}</b>
 
-pa?
+ ${
+ x.prioridad?
+ `<span class="badge ${x.prioridad==="Alta"?"red":""}">
+ ${escapar(x.prioridad)}
+ </span>`:""
+ }
+ </div>
 
-`<p class="muted">
-${pa} registro(s) pendientes de atención.
-</p>`
+ <p>
+ 👮 ${escapar(x.guarda||"Sin guarda")}
+ </p>
 
-:
+ <p>${escapar(x.texto||"")}</p>
 
-`<div class="empty">
-No tienes pendientes. ✅
-</div>`;
+ <small>${escapar(x.fecha||"")}</small>
 
+ <div class="actions">
 
-$("conjuntoList").innerHTML=
+ <button class="warning"
+ onclick="editarNovedad(${x.id})">
+ ✏️ Editar
+ </button>
 
-db.conjuntos.length?
+ <button class="danger"
+ onclick="eliminar('${tipo}',${x.id})">
+ 🗑️ Eliminar
+ </button>
 
-db.conjuntos.map(x=>`
+ </div>
 
-<div class="item">
+ </div>
 
-<div class="row">
-
-<b>
-🏢 ${x.nombre}
-</b>
-
-<span class="badge ${x.activo?"":"pending"}">
-${x.activo?"Activo":"Inactivo"}
-</span>
-
-</div>
-
-<p>
-👤 Administrador:
-${x.admin||"No registrado"}
-</p>
-
-${x.tel?
-`<p>📱 ${x.tel}</p>`:""}
-
-${x.direccion?
-`<p>📍 ${x.direccion}</p>`:""}
-
-<button
-class="secondary"
-onclick="toggleSet(${x.id})"
->
-${x.activo?"Desactivar":"Activar"}
-</button>
-
-</div>
-
-`).join("")
-
-:
-
-`<div class="empty">
-Todavía no hay conjuntos.
-</div>`;
-
-
-$("guardList").innerHTML=
-
-db.guardas.length?
-
-db.guardas.map(x=>`
-
-<div class="item">
-
-<div class="row">
-
-<b>
-👮 ${x.nombre}
-</b>
-
-<span class="badge ${x.activo?"":"pending"}">
-${x.activo?"Activo":"Inactivo"}
-</span>
-
-</div>
-
-<p>
-🏢 ${x.conjunto||"Sin asignar"}
-</p>
-
-<p>
-⏰ ${x.turno}
-</p>
-
-<button
-class="secondary"
-onclick="toggleGuard(${x.id})"
->
-${x.activo?"Desactivar":"Activar"}
-</button>
-
-</div>
-
-`).join("")
-
-:
-
-`<div class="empty">
-Todavía no hay guardas.
-</div>`;
-
-
-setSelects();
-
-
-$("novedadList").innerHTML=
-renderList("novedades");
-
-$("reqList").innerHTML=
-renderList("requerimientos");
-
-$("minutaList").innerHTML=
-renderList("minutas");
-
-$("dotList").innerHTML=
-renderList("dotacion");
-
-
-$("turnoList").innerHTML=
-
-db.turnos.length?
-
-db.turnos.map(x=>`
-
-<div class="item">
-
-🏢 <b>${x.conjunto}</b>
-
-<p>
-Entrega: ${x.entrega}
-→
-Recibe: ${x.recibe}
-|
-${x.hora}
-</p>
-
-<p>
-${x.obs}
-</p>
-
-</div>
-
-`).join("")
-
-:
-
-`<div class="empty">
-No hay cambios.
-</div>`;
-
-
-$("rondaList").innerHTML=
-
-db.rondas.length?
-
-db.rondas.map(x=>`
-
-<div class="item">
-
-🏢 <b>${x.conjunto}</b>
-
-<p>
-👮 ${x.guarda}
-|
-${x.hora}
-</p>
-
-<p>
-${x.obs}
-</p>
-
-</div>
-
-`).join("")
-
-:
-
-`<div class="empty">
-No hay rondas.
-</div>`;
-
-
-$("planillaList").innerHTML=
-
-db.planillas.length?
-
-db.planillas.map(x=>`
-
-<div class="item">
-
-🚗 ${x.archivo}
-
-<br>
-
-<small>
-${x.fecha}
-</small>
-
-</div>
-
-`).join("")
-
-:"";
-
-
-$("appn").value=
-db.config.nombre;
-
-$("sup").value=
-db.config.supervisor;
-
-$("emp").value=
-db.config.empresa;
-
-previewPuesto();
-
+ `).join("");
 }
 
+
+/* ================= EDITAR NOVEDAD ================= */
+
+function editarNovedad(id){
+
+ const x=db.novedades.find(a=>a.id===id);
+
+ if(!x)return;
+
+ poner("idNovedad",x.id);
+ poner("puestoNovedad",x.puesto);
+ poner("guardaNovedad",x.guarda);
+ poner("prioridadNovedad",x.prioridad);
+ poner("textoNovedad",x.texto);
+
+ mostrar("novedades");
+}
+
+
+/* ================= EDITAR RONDA ================= */
+
+function editarRonda(id){
+
+ const x=db.rondas.find(a=>a.id===id);
+
+ if(!x)return;
+
+ poner("idRonda",x.id);
+ poner("puestoRonda",x.puesto);
+ poner("guardaRonda",x.guarda);
+ poner("horaRonda",x.hora);
+ poner("textoRonda",x.texto);
+
+ mostrar("rondas");
+}
+
+
+/* ================= EDITAR TURNO ================= */
+
+function editarTurno(id){
+
+ const x=db.turnos.find(a=>a.id===id);
+
+ if(!x)return;
+
+ poner("idTurno",x.id);
+ poner("puestoTurno",x.puesto);
+ poner("entregaTurno",x.entrega);
+ poner("recibeTurno",x.recibe);
+ poner("horaTurno",x.hora);
+ poner("observacionTurno",x.observacion);
+
+ mostrar("turnos");
+}
+
+
+/* ================= EDITAR MINUTA ================= */
+
+function editarMinuta(id){
+
+ const x=db.minutas.find(a=>a.id===id);
+
+ if(!x)return;
+
+ poner("idMinuta",x.id);
+ poner("puestoMinuta",x.puesto);
+ poner("guardaMinuta",x.guarda);
+ poner("cantidadMinuta",x.cantidad);
+ poner("observacionMinuta",x.observacion);
+
+ mostrar("minutas");
+}
+
+
+/* ================= EDITAR DOTACIÓN ================= */
+
+function editarDotacion(id){
+
+ const x=db.dotaciones.find(a=>a.id===id);
+
+ if(!x)return;
+
+ poner("idDotacion",x.id);
+ poner("puestoDotacion",x.puesto);
+ poner("guardaDotacion",x.guarda);
+ poner("elementoDotacion",x.elemento);
+ poner("tallaDotacion",x.talla);
+ poner("cantidadDotacion",x.cantidad);
+ poner("observacionDotacion",x.observacion);
+
+ mostrar("dotacion");
+}
+
+
+/* ================= EDITAR REQUERIMIENTO ================= */
+
+function editarRequerimiento(id){
+
+ const x=db.requerimientos.find(a=>a.id===id);
+
+ if(!x)return;
+
+ poner("idRequerimiento",x.id);
+ poner("puestoRequerimiento",x.puesto);
+ poner("guardaRequerimiento",x.guarda);
+ poner("tipoRequerimiento",x.tipo);
+ poner("prioridadRequerimiento",x.prioridad);
+ poner("textoRequerimiento",x.texto);
+
+ mostrar("requerimientos");
+}
+
+
+/* ================= INICIAR ================= */
 
 render();
 
